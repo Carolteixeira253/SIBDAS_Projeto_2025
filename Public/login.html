@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MedInventory Solutions</title>
+
+    <link rel="stylesheet" href="./assets/css/1231343.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="login-box">
+
+            <div class="login-header">
+                <h2>MedInventory Solutions</h2>
+                <p>Sistemas de Informação Hospitalar</p>
+            </div>
+
+            <form action="../private/validar_login.php" method="POST" id="form-login">
+
+                <div class="input-grupo">
+                    <label for="utilizador">Utilizador / Email Institucional</label>
+                    <input type="email" id="utilizador" name="utilizador" placeholder="exemplo@isep.ipp.pt" required>
+                </div>
+
+                <div class="input-grupo">
+                    <label for="senha">Palavra-passe</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite a sua senha" required>
+                </div>
+
+                <button type="submit" class="btn-login">Entrar no Sistema</button>
+            </form>
+
+            <div class="login-footer">
+                <a href="index.html">← Voltar à página inicial</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
