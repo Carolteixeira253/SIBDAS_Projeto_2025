@@ -1,0 +1,308 @@
+/*RESET - Configurações Inicias */
+/* Importa a fonte Inter (Super limpa, elegante e usada por softwares médicos premium) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* { margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}body {
+    background-color:#f8fafc; /* Fundo geral num tom quase branco com um toque de azul */
+    color: #334155;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. BARRA DE NAVEGAÇÃO (NAVBAR) */
+.bng-navbar {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 4px 20px rgba(0, 43, 92, 0.05); /* Sombra leve em tom marinho */
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bng-navbar img {
+    height: 50px;
+    width: auto;
+}
+
+.bng-navbar h3 {
+    font-size: 1.6em;
+    color: #002b5c; /* Azul Marinho Profissional */
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Links Centrais de Navegação */
+.container-navegacao {
+    display: flex;
+    gap: 35px;
+}
+
+.container-navegacao a {
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #475569; /* Cinza ardósia suave */
+    transition: color 0.3s ease;
+}
+
+.container-navegacao a:hover {
+    color: #0066cc; /* Transição para Azul Clínico */
+}
+
+/* Botão Entrar (Login) */
+.nav-cliente a {
+    text-decoration: none;
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95em;
+    box-shadow: 0px 4px 12px rgba(0, 102, 204, 0.15);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-cliente a:hover {
+    background-color: #002b5c; /* Escurece para Marinho no hover */
+    box-shadow: 0px 6px 16px rgba(0, 43, 92, 0.2);
+    transform: translateY(-1px);
+}
+/* 3. Secção Principal */
+.hero {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    padding: 60px 80px;
+    width: 100%;
+    /* Gradiente lindo do Azul Bebé para o Branco */
+    background: linear-gradient(135deg, #eef6fc 0%, #ffffff 100%);
+}
+
+.hero-texto {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-texto h1 {
+    font-size: 3.8em;
+    color: #002b5c; /* Azul Marinho para contraste e leitura forte */
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-texto p {
+    font-size: 1.2em;
+    color: #475569;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Botões de Ação */
+.hero-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-azul {
+    text-decoration: none;
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 15px rgba(0, 102, 204, 0.2);
+}
+
+.btn-azul:hover {
+    background-color: #002b5c;
+    transform: translateY(-2px);
+}
+
+.btn-transparente {
+    text-decoration: none;
+    border: 2px solid #0066cc;
+    color: #0066cc;
+    padding: 14px 32px; /* Compensação da borda */
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-transparente:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Área da Imagem */
+.hero-imagem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-imagem img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    border-radius: 20px;
+    /* Sombra suave com a cor marinha para parecer integrado */
+    box-shadow: 0px 20px 40px rgba(0, 43, 92, 0.08); 
+    border: 4px solid #ffffff; /* Moldura branca estilo clínico */
+}
+
+/*Quem somos página*/
+.quem-somos-container {
+    min-height: calc(100vh - 80px);
+    padding: 80px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%); /* Inverte o gradiente para dar dinâmica */
+}
+
+.quem-somos-conteudo {
+    max-width: 900px;
+    text-align: center; /* Centraliza o texto para um formato editorial premium */
+}
+
+.subtitulo-clinico {
+    display: inline-block;
+    color: #0066cc;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.quem-somos-conteudo h1 {
+    font-size: 2.8em;
+    color: #002b5c;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.quem-somos-conteudo p {
+    font-size: 1.15em;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+/* Grelha de Valores/Destaques no fundo da página */
+.valores-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.valor-item {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: left;
+    box-shadow: 0px 10px 30px rgba(0, 43, 92, 0.03);
+    border: 1px solid rgba(0, 102, 204, 0.05);
+}
+
+.valor-item i {
+    font-size: 1.8em;
+    color: #0066cc;
+    margin-bottom: 15px;
+}
+
+.valor-item h4 {
+    font-size: 1.15em;
+    color: #002b5c;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.valor-item p {
+    font-size: 0.95em;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Responsividade para a grelha de valores */
+@media(max-width: 768px) {
+    .valores-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .valor-item {
+        width: 100%;
+    }
+    .quem-somos-conteudo h1 {
+        font-size: 2.2em;
+    }
+}
+/* 4- Rodapé (Footer)*/
+.footer-container {
+    background-color: #002b5c; /* Total autoridade em Marinho */
+    color: #ffffff;
+    padding: 30px 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-section p {
+    font-size: 0.95em;
+    color: #cbd5e1; /* Branco acinzentado suave */
+    font-weight: 400;
+}
+/*Outras alterações / Ajustes discretos de responsividade*/
+@media(max-width: 1024px) {
+    .bng-navbar {
+        padding: 0 30px;
+    }
+    
+    .hero {
+        flex-direction: column-reverse; /* Imagem passa para cima em tablets/telemóveis */
+        text-align: center;
+        padding: 50px 30px;
+    }
+
+    .hero-texto h1 {
+        font-size: 2.8em;
+    }
+
+    .hero-botoes {
+        justify-content: center;
+    }
+
+    .hero-imagem img {
+        max-width: 80%;
+    }
+}
