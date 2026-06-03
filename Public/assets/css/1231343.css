@@ -16,25 +16,24 @@ body {
     width: 100%;
 }
 
-/* NAVBAR */
+html {
+    /* Mantém o comportamento padrão do navegador (sem scroll-behavior suave) 
+       para garantir o carregamento instantâneo tradicional entre ficheiros separados */
+}
+
+/* NAVBAR - GERAL*/
 
 .bng-navbar {
 
     background: #ffffff;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     height: 90px;
-
     padding: 0 40px;
-
     position: sticky;
     top: 0;
-
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
-
     z-index: 1000;
     width: 100%;
 
@@ -79,13 +78,9 @@ body {
 .container-navegacao a {
 
     text-decoration: none;
-
     font-size: 1.1em;
-
     font-weight: 600;
-
     color: #355070;
-
     transition: 0.3s;
 
 }
@@ -101,17 +96,11 @@ body {
 .nav-cliente a {
 
     text-decoration: none;
-
     background: #0d6efd;
-
     color: white;
-
     padding: 12px 28px;
-
     border-radius: 12px;
-
     font-weight: bold;
-
     transition: 0.3s;
 
 }
