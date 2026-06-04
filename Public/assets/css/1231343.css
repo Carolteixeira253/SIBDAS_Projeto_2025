@@ -2,12 +2,16 @@
 /* Importa a fonte Inter (Super limpa, elegante e usada por softwares médicos premium) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-* { margin: 0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-}body {
-    background-color:#f8fafc; /* Fundo geral num tom quase branco com um toque de azul */
+}
+
+body {
+    background-color: #f8fafc;
+    /* Fundo geral num tom quase branco com um toque de azul */
     color: #334155;
     overflow-x: hidden;
     width: 100%;
@@ -23,7 +27,8 @@
     padding: 0 50px;
     position: sticky;
     top: 0;
-    box-shadow: 0px 4px 20px rgba(0, 43, 92, 0.05); /* Sombra leve em tom marinho */
+    box-shadow: 0px 4px 20px rgba(0, 43, 92, 0.05);
+    /* Sombra leve em tom marinho */
     z-index: 1000;
     width: 100%;
 }
@@ -41,7 +46,8 @@
 
 .bng-navbar h3 {
     font-size: 1.6em;
-    color: #002b5c; /* Azul Marinho Profissional */
+    color: #002b5c;
+    /* Azul Marinho Profissional */
     font-weight: 700;
     letter-spacing: -0.5px;
 }
@@ -56,12 +62,14 @@
     text-decoration: none;
     font-size: 1.05em;
     font-weight: 600;
-    color: #475569; /* Cinza ardósia suave */
+    color: #475569;
+    /* Cinza ardósia suave */
     transition: color 0.3s ease;
 }
 
 .container-navegacao a:hover {
-    color: #0066cc; /* Transição para Azul Clínico */
+    color: #0066cc;
+    /* Transição para Azul Clínico */
 }
 
 /* Botão Entrar (Login) */
@@ -81,10 +89,12 @@
 }
 
 .nav-cliente a:hover {
-    background-color: #002b5c; /* Escurece para Marinho no hover */
+    background-color: #002b5c;
+    /* Escurece para Marinho no hover */
     box-shadow: 0px 6px 16px rgba(0, 43, 92, 0.2);
     transform: translateY(-1px);
 }
+
 /* 3. Secção Principal */
 .hero {
     min-height: calc(100vh - 90px);
@@ -105,7 +115,8 @@
 
 .hero-texto h1 {
     font-size: 3.8em;
-    color: #002b5c; /* Azul Marinho para contraste e leitura forte */
+    color: #002b5c;
+    /* Azul Marinho para contraste e leitura forte */
     line-height: 1.15;
     font-weight: 700;
     margin-bottom: 20px;
@@ -144,7 +155,8 @@
     text-decoration: none;
     border: 2px solid #0066cc;
     color: #0066cc;
-    padding: 14px 32px; /* Compensação da borda */
+    padding: 14px 32px;
+    /* Compensação da borda */
     border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
@@ -170,81 +182,107 @@
     height: auto;
     border-radius: 20px;
     /* Sombra suave com a cor marinha para parecer integrado */
-    box-shadow: 0px 20px 40px rgba(0, 43, 92, 0.08); 
-    border: 4px solid #ffffff; /* Moldura branca estilo clínico */
+    box-shadow: 0px 20px 40px rgba(0, 43, 92, 0.08);
+    border: 4px solid #ffffff;
+    /* Moldura branca estilo clínico */
 }
 
-/*Quem somos página*/
+/* 5 - Quem somos página*/
 .quem-somos-container {
-    min-height: calc(100vh - 80px);
-    padding: 80px 50px;
+    min-height: calc(100vh - 170px); /* Ajustado para dar espaço real à navbar (80px) e ao footer */
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%); /* Inverte o gradiente para dar dinâmica */
+    align-items: flex-start; /* Alinha pelo topo para o conteúdo fluir naturalmente para baixo */
+    padding: 60px 20px 80px 20px; /* Aumentado o padding inferior (80px) para afastar a caixa do rodapé */
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
 }
 
+/*CAIXA CHIQUE centralizada */
 .quem-somos-conteudo {
-    max-width: 900px;
-    text-align: center; /* Centraliza o texto para um formato editorial premium */
+    background-color: #ffffff;
+    max-width: 850px;
+    padding: 50px 60px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 40px rgba(0, 43, 92, 0.04);
+    border: 1px solid rgba(0, 102, 204, 0.06);
+    text-align: center;
+    margin-bottom: 20px; /* Margem de segurança extra na base da caixa */
 }
 
+/* O pequeno texto acima do título */
 .subtitulo-clinico {
     display: inline-block;
     color: #0066cc;
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
+/* O título principal */
 .quem-somos-conteudo h1 {
-    font-size: 2.8em;
+    font-size: 2.3em;
     color: #002b5c;
     font-weight: 600;
+    line-height: 1.3;
     letter-spacing: -0.5px;
-    line-height: 1.2;
     margin-bottom: 30px;
 }
 
+/* Parágrafos de texto corrido */
 .quem-somos-conteudo p {
-    font-size: 1.15em;
+    font-size: 1.05em;
     color: #64748b;
-    line-height: 1.7;
-    margin-bottom: 25px;
+    line-height: 1.75;
     font-weight: 400;
+    margin-bottom: 25px;
 }
 
-/* Grelha de Valores/Destaques no fundo da página */
+.quem-somos-conteudo p strong {
+    color: #002b5c;
+    font-weight: 600;
+}
+
+/*ELEMENTOS DE BAIXO: AS CAIXAS DE VALORES */
 .valores-grid {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 50px;
+    gap: 25px;
+    margin-top: 40px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 40px;
 }
 
 .valor-item {
-    background-color: #ffffff;
-    padding: 30px;
+    flex: 1;
+    background-color: #f8fafc;
+    padding: 25px;
     border-radius: 12px;
-    width: 320px;
     text-align: left;
-    box-shadow: 0px 10px 30px rgba(0, 43, 92, 0.03);
-    border: 1px solid rgba(0, 102, 204, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.valor-item:hover {
+    background-color: #ffffff;
+    border-color: #0066cc;
+    box-shadow: 0px 8px 20px rgba(0, 102, 204, 0.05);
+    transform: translateY(-2px);
 }
 
 .valor-item i {
-    font-size: 1.8em;
+    font-size: 1.5em;
     color: #0066cc;
     margin-bottom: 15px;
+    display: inline-block;
 }
 
 .valor-item h4 {
-    font-size: 1.15em;
+    font-size: 1.1em;
     color: #002b5c;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .valor-item p {
@@ -254,55 +292,62 @@
     margin-bottom: 0;
 }
 
-/* Responsividade para a grelha de valores */
+/* Ajuste de Responsividade*/
 @media(max-width: 768px) {
-    .valores-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .valor-item {
-        width: 100%;
-    }
-    .quem-somos-conteudo h1 {
-        font-size: 2.2em;
-    }
-}
-/* 4- Rodapé (Footer)*/
-.footer-container {
-    background-color: #002b5c; /* Total autoridade em Marinho */
-    color: #ffffff;
-    padding: 30px 50px;
-    text-align: center;
-    width: 100%;
-}
-
-.footer-section p {
-    font-size: 0.95em;
-    color: #cbd5e1; /* Branco acinzentado suave */
-    font-weight: 400;
-}
-/*Outras alterações / Ajustes discretos de responsividade*/
-@media(max-width: 1024px) {
-    .bng-navbar {
-        padding: 0 30px;
+    .quem-somos-conteudo {
+        padding: 40px 25px;
     }
     
-    .hero {
-        flex-direction: column-reverse; /* Imagem passa para cima em tablets/telemóveis */
+    .valores-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .quem-somos-conteudo h1 {
+        font-size: 1.8em;
+    }
+}
+
+    /* 4- Rodapé (Footer)*/
+    .footer-container {
+        background-color: #002b5c;
+        /* Total autoridade em Marinho */
+        color: #ffffff;
+        padding: 30px 50px;
         text-align: center;
-        padding: 50px 30px;
+        width: 100%;
     }
 
-    .hero-texto h1 {
-        font-size: 2.8em;
+    .footer-section p {
+        font-size: 0.95em;
+        color: #cbd5e1;
+        /* Branco acinzentado suave */
+        font-weight: 400;
     }
 
-    .hero-botoes {
-        justify-content: center;
-    }
+    /*Outras alterações / Ajustes discretos de responsividade*/
+    @media(max-width: 1024px) {
+        .bng-navbar {
+            padding: 0 30px;
+        }
 
-    .hero-imagem img {
-        max-width: 80%;
+        .hero {
+            flex-direction: column-reverse;
+            /* Imagem passa para cima em tablets/telemóveis */
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .hero-texto h1 {
+            font-size: 2.8em;
+        }
+
+        .hero-botoes {
+            justify-content: center;
+        }
+
+        .hero-imagem img {
+            max-width: 80%;
+        }
     }
 }
