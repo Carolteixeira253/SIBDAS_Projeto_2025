@@ -189,11 +189,14 @@ body {
 
 /* 5 - Quem somos página*/
 .quem-somos-container {
-    min-height: calc(100vh - 170px); /* Ajustado para dar espaço real à navbar (80px) e ao footer */
+    min-height: calc(100vh - 170px);
+    /* Ajustado para dar espaço real à navbar (80px) e ao footer */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha pelo topo para o conteúdo fluir naturalmente para baixo */
-    padding: 60px 20px 80px 20px; /* Aumentado o padding inferior (80px) para afastar a caixa do rodapé */
+    align-items: flex-start;
+    /* Alinha pelo topo para o conteúdo fluir naturalmente para baixo */
+    padding: 60px 20px 80px 20px;
+    /* Aumentado o padding inferior (80px) para afastar a caixa do rodapé */
     background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
 }
 
@@ -206,7 +209,8 @@ body {
     box-shadow: 0px 10px 40px rgba(0, 43, 92, 0.04);
     border: 1px solid rgba(0, 102, 204, 0.06);
     text-align: center;
-    margin-bottom: 20px; /* Margem de segurança extra na base da caixa */
+    margin-bottom: 20px;
+    /* Margem de segurança extra na base da caixa */
 }
 
 /* O pequeno texto acima do título */
@@ -297,17 +301,18 @@ body {
     .quem-somos-conteudo {
         padding: 40px 25px;
     }
-    
+
     .valores-grid {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .quem-somos-conteudo h1 {
         font-size: 1.8em;
     }
 }
-    /* 6- EQUIPAMENTOS HOSPITALARES CSS*/
+
+/* 6- EQUIPAMENTOS HOSPITALARES CSS*/
 .eq-seccao {
     min-height: calc(100vh - 170px);
     padding: 60px 20px 80px 20px;
@@ -340,17 +345,22 @@ body {
 .eq-grid {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Garante que todos os cartões têm exatamente a mesma altura */
-    gap: 20px;            /* Espaçamento ideal para caberem os 4 em ecrãs normais */
-    max-width: 1400px;    /* Alarga o limite máximo da página para o professor ver tudo em linha */
+    align-items: stretch;
+    /* Garante que todos os cartões têm exatamente a mesma altura */
+    gap: 20px;
+    /* Espaçamento ideal para caberem os 4 em ecrãs normais */
+    max-width: 1400px;
+    /* Alarga o limite máximo da página para o professor ver tudo em linha */
     margin: 0 auto;
     width: 100%;
 }
 
 /* CARTÃO INDIVIDUAL REESTRUTURADO */
 .eq-card {
-    flex: 1;              /* Distribui o espaço irmão irmamente (25% para cada um) */
-    min-width: 250px;     /* Impede que fiquem demasiado esmagados */
+    flex: 1;
+    /* Distribui o espaço irmão irmamente (25% para cada um) */
+    min-width: 250px;
+    /* Impede que fiquem demasiado esmagados */
     background-color: #ffffff;
     border-radius: 16px;
     padding: 24px;
@@ -372,14 +382,16 @@ body {
 /* Cria um bloco cinzento muito suave onde vais meter a foto mais tarde */
 .eq-imagem-placeholder {
     width: 100%;
-    height: 140px;        /* Altura ideal para a foto do aparelho não roubar o ecrã todo */
+    height: 140px;
+    /* Altura ideal para a foto do aparelho não roubar o ecrã todo */
     background-color: #f8fafc;
     border-radius: 10px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed #cbd5e1; /* Linha tracejada chique que indica "espaço reservado" */
+    border: 1px dashed #cbd5e1;
+    /* Linha tracejada chique que indica "espaço reservado" */
     overflow: hidden;
 }
 
@@ -387,7 +399,8 @@ body {
 .eq-imagem-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    /* Corta a imagem perfeitamente sem a distorcer */
+    object-fit: cover;
+    /* Corta a imagem perfeitamente sem a distorcer */
 }
 
 /* Alinhamento do Ícone juntamente com o Título */
@@ -423,7 +436,8 @@ body {
     color: #64748b;
     line-height: 1.5;
     margin-bottom: 15px;
-    flex-grow: 1;        /* Faz o texto esticar o cartão uniformemente */
+    flex-grow: 1;
+    /* Faz o texto esticar o cartão uniformemente */
 }
 
 /* Meta dados e estados */
@@ -432,7 +446,8 @@ body {
     color: #94a3b8;
     border-top: 1px solid #f1f5f9;
     padding-top: 12px;
-    margin-top: auto;    /* Empurra para a base do cartão */
+    margin-top: auto;
+    /* Empurra para a base do cartão */
 }
 
 .eq-status {
@@ -448,9 +463,10 @@ body {
     background-color: #ecfdf5;
     color: #059669;
 }
- /* Não é manutenção mas sim operacional*/
+
+/* Não é manutenção mas sim operacional*/
 .eq-status.manutencao {
-   background-color: #ecfdf5;
+    background-color: #ecfdf5;
     color: #059669;
 }
 
@@ -460,9 +476,11 @@ body {
         flex-direction: column;
     }
 }
+
 /* 8- Serviços*/
 .srv-seccao {
-    min-height: calc(100vh - 170px); /* Proteção de altura para o rodapé */
+    min-height: calc(100vh - 170px);
+    /* Proteção de altura para o rodapé */
     padding: 60px 20px 80px 20px;
     background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
     width: 100%;
@@ -493,7 +511,8 @@ body {
 .srv-grid {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Iguala a altura de todos os cartões automaticamente */
+    align-items: stretch;
+    /* Iguala a altura de todos os cartões automaticamente */
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
@@ -530,7 +549,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed #cbd5e1; /* Margem tracejada técnica */
+    border: 1px dashed #cbd5e1;
+    /* Margem tracejada técnica */
     overflow: hidden;
 }
 
@@ -573,7 +593,8 @@ body {
     color: #64748b;
     line-height: 1.5;
     margin-bottom: 0;
-    flex-grow: 1; /* Alinha os blocos uniformemente */
+    flex-grow: 1;
+    /* Alinha os blocos uniformemente */
 }
 
 /* Responsividade académica para telemóveis */
@@ -583,45 +604,246 @@ body {
     }
 }
 
-    /* 4- Rodapé (Footer)*/
-    .footer-container {
-        background-color: #002b5c;
-        /* Total autoridade em Marinho */
-        color: #ffffff;
-        padding: 30px 50px;
+/* CONTACTOS*/
+.ct-seccao {
+    min-height: calc(100vh - 170px);
+    padding: 60px 20px 80px 20px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    width: 100%;
+}
+
+.ct-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.ct-intro h1 {
+    font-size: 2.4em;
+    color: #002b5c;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.ct-intro p {
+    color: #64748b;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* Contentor split (Dois blocos lado a lado) */
+.ct-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px rgba(0, 43, 92, 0.03);
+    border: 1px solid rgba(0, 102, 204, 0.05);
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Coluna de Informações (Esquerda) */
+.ct-info-box {
+    flex: 1;
+    background-color: #002b5c; /* Azul escuro corporativo */
+    padding: 45px;
+    color: #ffffff;
+}
+
+.ct-info-box h3 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.ct-info-desc {
+    color: #93c5fd;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+/* Itens de contacto individuais */
+.ct-info-detalhes {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ct-info-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.ct-info-icon {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.ct-info-item h5 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #ffffff;
+}
+
+.ct-info-item p {
+    font-size: 0.9em;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Coluna do Formulário (Direita) */
+.ct-form-box {
+    flex: 1.4;
+    padding: 45px;
+    background-color: #ffffff;
+}
+
+.ct-form-box h3 {
+    font-size: 1.5em;
+    color: #002b5c;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* Estrutura do Formulário */
+.medcare-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.form-group label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* Inputs, Selects e Textareas Técnicos */
+.medcare-form input,
+.medcare-form select,
+.medcare-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95em;
+    color: #1e293b;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.medcare-form input:focus,
+.medcare-form select:focus,
+.medcare-form textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 0px 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Botão Submeter Submissão */
+.btn-enviar {
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+    align-self: flex-start; /* Não estica o botão a toda a largura */
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    background-color: #004da6;
+}
+
+/* Responsividade Completa para Portáteis Pequenos / Telemóveis */
+@media (max-width: 900px) {
+    .ct-container {
+        flex-direction: column;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .ct-info-box, .ct-form-box {
+        padding: 30px;
+    }
+}
+/* 4- Rodapé (Footer)*/
+.footer-container {
+    background-color: #002b5c;
+    /* Total autoridade em Marinho */
+    color: #ffffff;
+    padding: 30px 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-section p {
+    font-size: 0.95em;
+    color: #cbd5e1;
+    /* Branco acinzentado suave */
+    font-weight: 400;
+}
+
+/*Outras alterações / Ajustes discretos de responsividade*/
+@media(max-width: 1024px) {
+    .bng-navbar {
+        padding: 0 30px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        /* Imagem passa para cima em tablets/telemóveis */
         text-align: center;
-        width: 100%;
+        padding: 50px 30px;
     }
 
-    .footer-section p {
-        font-size: 0.95em;
-        color: #cbd5e1;
-        /* Branco acinzentado suave */
-        font-weight: 400;
+    .hero-texto h1 {
+        font-size: 2.8em;
     }
 
-    /*Outras alterações / Ajustes discretos de responsividade*/
-    @media(max-width: 1024px) {
-        .bng-navbar {
-            padding: 0 30px;
-        }
-
-        .hero {
-            flex-direction: column-reverse;
-            /* Imagem passa para cima em tablets/telemóveis */
-            text-align: center;
-            padding: 50px 30px;
-        }
-
-        .hero-texto h1 {
-            font-size: 2.8em;
-        }
-
-        .hero-botoes {
-            justify-content: center;
-        }
-
-        .hero-imagem img {
-            max-width: 80%;
-        }
+    .hero-botoes {
+        justify-content: center;
     }
+
+    .hero-imagem img {
+        max-width: 80%;
+    }
+}

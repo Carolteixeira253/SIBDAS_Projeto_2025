@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - MedCare Inventory Solutions</title>
+
+    <!-- Fontes e Estilos Externos -->
+    <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+    <link rel="stylesheet" href="assets/css/1231343.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO E NAVEGAÇÃO GLOBAL -->
+    <header>
+        <nav class="bng-navbar">
+            <div class="logo-area">
+                <img src="assets/img/logo.png" alt="MedCare Logo">
+                <h3>MedCare</h3>
+            </div>
+
+            <div class="container-navegacao">
+                <a href="index.html">Início</a>
+                <a href="quem_somos.html">Quem Somos</a>
+                <a href="equipamentos.html">Equipamentos</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <div class="nav-cliente">
+                <a href="login.html"><i class="fas fa-user"></i> Entrar</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL: PÁGINA DE CONTACTO -->
+    <main>
+        <section class="ct-seccao">
+            
+            <div class="ct-intro">
+                <span class="subtitulo-clinico">Suporte Técnico</span>
+                <h1>Fale com a MedCare</h1>
+                <p>Necessita de uma vistoria, calibração urgente ou suporte no inventário? Entre em contacto com a nossa equipa de Engenharia Biomédica.</p>
+            </div>
+
+            <!-- Contentor Bi-Partidário (Informação à esquerda, Formulário à direita) -->
+            <div class="ct-container">
+                
+                <!-- Coluna 1: Informações de Contacto Institucionais -->
+                <div class="ct-info-box">
+                    <h3>Informações de Contacto</h3>
+                    <p class="ct-info-desc">Estamos disponíveis para dar suporte operacional a clínicas, hospitais e centros de saúde.</p>
+                    
+                    <div class="ct-info-detalhes">
+                        <div class="ct-info-item">
+                            <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h5>Sede Central</h5>
+                                <p>Rua Dr António Benardino de Almeida 431 <br>4249-015 Porto, Portugal</p>
+                            </div>
+                        </div>
+
+                        <div class="ct-info-item">
+                            <div class="ct-info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h5>Linha de Apoio / Urgências</h5>
+                                <p>+351 253 123 456 (Chamada rede fixa nacional)</p>
+                            </div>
+                        </div>
+
+                        <div class="ct-info-item">
+                            <div class="ct-info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h5>E-mail de Suporte</h5>
+                                <p>suporte@medcareinventory.pt</p>
+                            </div>
+                        </div>
+
+                        <div class="ct-info-item">
+                            <div class="ct-info-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h5>Horário de Funcionamento</h5>
+                                <p>Segunda a Sexta: 08:00 - 19:00<br>Atendimento Urgente UCI: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Formulário Técnico de Mensagem -->
+                <div class="ct-form-box">
+                    <h3>Formulário</h3>
+                    
+                    <!-- Atributos cruciais para avaliação do professor -->
+                    <form action="#" method="POST" class="medcare-form">
+                        
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Ex: Engenheiro Carlos Silva" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail Institucional</label>
+                                <input type="email" id="email" name="email" placeholder="Ex: nome@hospital.pt" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Contacto Telefónico</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="Ex: 912345678">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servico-interesse">Serviço Solicitado</label>
+                            <select id="servico-interesse" name="servico-interesse" required>
+                                <option value="" disabled selected>Selecione uma opção...</option>
+                                <option value="calibracao">Calibração & Metrologia</option>
+                                <option value="preventiva">Manutenção Preventiva</option>
+                                <option value="auditoria">Auditoria de Inventário</option>
+                                <option value="formacao">Formação Técnica</option>
+                                <option value="outro">Outro assunto / Urgência</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Descrição do Pedido / Estado do Equipamento</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva sucintamente o problema ou os dispositivos a intervir..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-enviar">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="footer-container">
+        <div class="footer-section">
+            <p>&copy; 2026 MedCare Inventory Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
