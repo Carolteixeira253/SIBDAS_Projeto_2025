@@ -805,6 +805,163 @@ body {
         padding: 30px;
     }
 }
+/*LOGIN PAGE*/
+.lg-seccao {
+    min-height: calc(100vh - 170px); /* Garante o alinhamento e protege o rodapé azul */
+    padding: 60px 20px 80px 20px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra horizontal e verticalmente a caixa de login no ecrã */
+    width: 100%;
+}
+
+/* O Bloco Central de Login */
+.lg-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px; /* Tamanho padrão de caixas de login profissionais */
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0px 15px 40px rgba(0, 43, 92, 0.05);
+    border: 1px solid rgba(0, 102, 204, 0.06);
+}
+
+/* Cabeçalho Interno do Card */
+.lg-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lg-icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #eef6fc;
+    color: #0066cc;
+    border-radius: 50%; /* Faz um círculo perfeito */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.lg-header h2 {
+    font-size: 1.6em;
+    color: #002b5c;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.lg-header p {
+    font-size: 0.9em;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* Formulário e Estrutura dos Campos */
+.lg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lg-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lg-group label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* Caixa especial que junta o ícone e o input na mesma linha */
+.lg-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Ícone fixado dentro do campo de texto */
+.lg-field-icon {
+    position: absolute;
+    left: 14px;
+    color: #94a3b8;
+    font-size: 0.95em;
+    pointer-events: none; /* O clique passa através do ícone para o input */
+}
+
+/* Input com espaço à esquerda para não sobrepor o ícone */
+.lg-input-wrapper input {
+    width: 100%;
+    padding: 12px 14px 12px 40px; /* 40px à esquerda dá o espaço exato para o ícone */
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95em;
+    color: #1e293b;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.lg-input-wrapper input:focus {
+    outline: none;
+    border-color: #0066cc;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 0px 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Alinhamento do "Lembrar-me" e "Esqueceu-se" */
+.lg-opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+}
+
+.lg-lembrar {
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lg-esqueceu {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.lg-esqueceu:hover {
+    text-decoration: underline;
+}
+
+/* Botão Largo de Submissão */
+.btn-login {
+    background-color: #0066cc;
+    color: #ffffff;
+    width: 100%; /* Ocupa a largura total do card */
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+    margin-top: 5px;
+}
+
+.btn-login:hover {
+    background-color: #004da6;
+}
 /* 4- Rodapé (Footer)*/
 .footer-container {
     background-color: #002b5c;
