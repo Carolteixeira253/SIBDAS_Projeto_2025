@@ -25,16 +25,16 @@
 
             <!-- Links de Navegação Interna -->
             <div class="container-navegacao">
-                <a href="index.html">Início</a>
-                <a href="quem_somos.html">Quem Somos</a>
-                <a href="equipamentos.html">Equipamentos</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="index.php">Início</a>
+                <a href="quem_somos.php">Quem Somos</a>
+                <a href="equipamentos.php">Equipamentos</a>
+                <a href="servicos.php">Serviços</a>
+                <a href="contacto.php">Contacto</a>
             </div>
 
             <!-- Botão de Área de Cliente (Login) -->
             <div class="nav-cliente">
-                <a href="login.html"><i class="fas fa-user"></i> Entrar</a>
+                <a href="login.php"><i class="fas fa-user"></i> Entrar</a>
             </div>
         </nav>
     </header>
@@ -48,8 +48,8 @@
                 <p>Otimize o controlo, manutenção e rastreabilidade de todos os equipamentos clínicos da sua unidade de
                     saúde com a plataforma líder em engenharia biomédica.</p>
                 <div class="hero-botoes">
-                    <a href="contacto.html" class="btn-azul">Solicitar Demonstração</a>
-                    <a href="servicos.html" class="btn-transparente">Saber Mais</a>
+                    <a href="contacto.php" class="btn-azul">Solicitar Demonstração</a>
+                    <a href="servicos.php" class="btn-transparente">Saber Mais</a>
                 </div>
             </div>
             <div class="hero-imagem">

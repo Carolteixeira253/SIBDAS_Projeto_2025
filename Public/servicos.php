@@ -19,15 +19,15 @@
             </div>
 
             <div class="container-navegacao">
-                <a href="index.html">Início</a>
-                <a href="quem_somos.html">Quem Somos</a>
-                <a href="equipamentos.html">Equipamentos</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="index.php">Início</a>
+                <a href="quem_somos.php">Quem Somos</a>
+                <a href="equipamentos.php">Equipamentos</a>
+                <a href="servicos.php">Serviços</a>
+                <a href="contacto.php">Contacto</a>
             </div>
 
             <div class="nav-cliente">
-                <a href="login.html"><i class="fas fa-user"></i> Entrar</a>
+                <a href="login.php"><i class="fas fa-user"></i> Entrar</a>
             </div>
         </nav>
     </header>

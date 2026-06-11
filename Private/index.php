@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedCare - Dashboard</title>
-
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/1231343.css">
-</head>
-
-<body>
-
+<?php include 'includes/header.php'; ?>
 <div class="app-viewport">
 
-    <!-- HEADER -->
-    <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-        <a href="index.html" class="brand-header">
-            <i class="fa-solid fa-heart-pulse me-2"></i>
-            <span>MedCare Inventory <span class="navbar-text-secundario fw-light fs-6 ms-2">| Hospital Backoffice</span></span>
-        </a>
-        <div class="d-flex align-items-center gap-3">
-            <span class="badge bg-light text-dark border">
-                <i class="fa-solid fa-server text-success me-1"></i>Produção
-            </span>
-            <div class="position-relative" style="cursor:pointer;" data-bs-toggle="tooltip" title="2 alertas de garantia">
-                <i class="fa-solid fa-bell text-white fs-5"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.6rem;">2</span>
-            </div>
-        </div>
-    </header>
+    <!-- HEADER /NAVBAR -->
+    <?php include 'includes/nav.php'; ?>
 
     <div class="content-body">
 
@@ -41,7 +11,7 @@
             <div>
                 <div class="sidebar-section-title">Navegação Principal</div>
                 <div class="nav flex-column">
-                    <a href="index.html" class="nav-link active">
+                    <a href="index.php" class="nav-link active">
                         <i class="fa-solid fa-table-columns me-3"></i>Dashboard
                     </a>
                 </div>
@@ -222,4 +192,110 @@
                                     <th>Categoria</th>
                                     <th>Estado</th>
                                     <th>Criticidade</th>
-                                    <th class="text-e
+                                    <th class="text-end pe-3">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-3"><strong>Ventilador Pulmonar V500</strong></td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Ventilação</span></td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Operacional</span></td>
+                                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">Alta</span></td>
+                                    <td class="text-end pe-3">
+                                        <a href="views/equipamentos/equipamentos.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3"><strong>Máquina de Raio-X Móvel</strong></td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Imagem</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Manutenção</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Média</span></td>
+                                    <td class="text-end pe-3">
+                                        <a href="views/equipamentos/equipamentos.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3"><strong>Monitor de Sinais Vitais</strong></td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Monitorização</span></td>
+                                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">Avariado</span></td>
+                                    <td><span class="badge bg-light text-muted border">Baixa</span></td>
+                                    <td class="text-end pe-3">
+                                        <a href="views/equipamentos/equipamentos.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-muted pt-2 pb-3" style="font-size:0.78rem;">
+                <?php echo APP_COPYRIGHT; ?> — Módulo de Engenharia Biomédica Hospitalar
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+    new Chart(document.getElementById('graficoCategoria'), {
+        type: 'bar',
+        data: {
+            labels: ['Ventilação', 'Imagem', 'Monitorização', 'Terapia', 'Diagnóstico'],
+            datasets: [{
+                label: 'Nº de Equipamentos',
+                data: [1, 1, 1, 0, 0],
+                backgroundColor: [
+                    'rgba(10,71,138,0.7)',
+                    'rgba(10,71,138,0.5)',
+                    'rgba(10,71,138,0.35)',
+                    'rgba(10,71,138,0.2)',
+                    'rgba(10,71,138,0.1)'
+                ],
+                borderRadius: 6,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.04)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<?php include 'includes/footer.php'; ?>

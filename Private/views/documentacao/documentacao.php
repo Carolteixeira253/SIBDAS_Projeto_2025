@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedCare - Equipamentos</title>
-
+    <title>MedCare - Documentação</title>
+    
     <link rel="icon" type="image/png" href="../Private/assets/img/logo.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,12 +12,11 @@
 
     <link rel="stylesheet" href="../../assets/css/1231343.css">
 </head>
-
 <body>
 
     <div class="app-viewport">
         <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-            <a href="../../index.html" class="brand-header">
+            <a href="../../index.php" class="brand-header">
                 <i class="fa-solid fa-heart-pulse me-2"></i>
                 <span>MedCare Inventory <span class="navbar-text-secundario">| Hospital Backoffice</span></span>
             </a>
@@ -35,26 +33,26 @@
                 <div>
                     <div class="sidebar-section-title">Navegação Principal</div>
                     <div class="nav flex-column">
-                        <a href="../../index.html" class="nav-link">
+                        <a href="../../index.php" class="nav-link">
                             <i class="fa-solid fa-table-columns me-3"></i>Dashboard
                         </a>
                     </div>
 
                     <div class="sidebar-section-title">Gestão de Ativos</div>
                     <div class="nav flex-column">
-                        <a href="equipamentos.html" class="nav-link active">
+                        <a href="../equipamentos/equipamentos.php" class="nav-link">
                             <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
                         </a>
-                        <a href="../fornecedores/fornecedores.html" class="nav-link">
+                        <a href="../fornecedores/fornecedores.php" class="nav-link">
                             <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
                         </a>
-                        <a href="../documentacao/documentacao.html" class="nav-link">
+                        <a href="documentacao.php" class="nav-link active">
                             <i class="fa-solid fa-bell me-3"></i>Documentação
                         </a>
-                        <a href="../garantias/garantias.html" class="nav-link">
+                        <a href="../garantias/garantias.php" class="nav-link">
                             <i class="fa-solid fa-file-invoice me-3"></i>Garantias
                         </a>
-                        <a href="../localizacoes/localizacoes.html" class="nav-link">
+                        <a href="../localizacoes/localizacoes.php" class="nav-link">
                             <i class="fa-solid fa-file-lines me-3"></i>Localizações
                         </a>
                     </div>
@@ -62,7 +60,7 @@
 
                 <div>
                     <div class="sidebar-section-title">Sessão</div>
-                    <a href="../../../Public/index.html" class="nav-link mb-3 link-frontoffice">
+                    <a href="../../../Public/index.php" class="nav-link mb-3 link-frontoffice">
                         <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Ir para Front-Office
                     </a>
                     <div class="sidebar-user-zone border-top border-light border-opacity-25 pt-3 d-flex align-items-center justify-content-between">
@@ -78,11 +76,11 @@
             <main class="main-content-wrapper">
                 <div class="d-flex justify-content-between align-items-start mb-4">
                     <div>
-                        <h1 class="fw-bold h2 mb-1 text-dark">Inventário de Equipamentos</h1>
-                        <p class="text-muted small mb-0">Gestão e monitorização de dispositivos médicos.</p>
+                        <h1 class="fw-bold h2 mb-1 text-dark">Documentação Técnica</h1>
+                        <p class="text-muted small mb-0">Repositório de manuais, diretivas e certificados de calibração.</p>
                     </div>
-                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalEquipamento">
-                        <i class="fa-solid fa-plus me-2"></i>Adicionar Equipamento
+                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalDocumento">
+                        <i class="fa-solid fa-plus me-2"></i>Submeter Documento
                     </button>
                 </div>
 
@@ -91,23 +89,23 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th class="ps-4">ID</th>
-                                    <th>Equipamento</th>
-                                    <th>Categoria</th>
-                                    <th>Estado</th>
-                                    <th>Localização</th>
+                                    <th class="ps-4">Nome do Documento</th>
+                                    <th>Tipo</th>
+                                    <th>Equipamento Alvo</th>
+                                    <th>Data de Upload</th>
+                                    <th>Formato</th>
                                     <th class="text-end pe-4">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-group-divider" id="tabelaEquipamentos">
+                            <tbody id="tabelaDocumentos">
                                 <tr>
-                                    <td class="ps-4 text-muted">#001</td>
-                                    <td><strong>Monitor Multiparamétrico</strong></td>
-                                    <td>Monitorização</td>
-                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle px-3">Operacional</span></td>
-                                    <td>Piso 1 - UCI</td>
+                                    <td class="ps-4"><strong>Manual_Utilizador_V1.pdf</strong></td>
+                                    <td>Manual Técnico</td>
+                                    <td>Monitor Multiparamétrico</td>
+                                    <td>08/06/2026</td>
+                                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">PDF</span></td>
                                     <td class="text-end pe-4">
-                                        <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-download"></i></button>
                                         <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -119,39 +117,46 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEquipamento" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalDocumento" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header bg-primary text-white border-0">
-                    <h5 class="modal-title fw-bold">Novo Equipamento</h5>
+                    <h5 class="modal-title fw-bold">Novo Documento</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form id="formEquipamento">
-                    <div class="modal-body p-4">
+                <div class="modal-body p-4">
+                    <form id="formDocumento">
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Nome do Equipamento</label>
-                            <input type="text" class="form-control" id="nomeEquip" placeholder="Ex: Ventilador" required>
+                            <label class="form-label fw-semibold">Título/Nome do Ficheiro</label>
+                            <input type="text" class="form-control" id="nomeDocumento" placeholder="Ex: Certificado_Calibracao_2026" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Categoria</label>
-                            <select class="form-select" id="catEquip" required>
-                                <option value="Monitorização">Monitorização</option>
-                                <option value="Suporte de Vida">Suporte de Vida</option>
-                                <option value="Diagnóstico">Diagnóstico</option>
+                            <label class="form-label fw-semibold">Tipo de Documento</label>
+                            <select class="form-select" id="tipoDocumento">
+                                <option value="Manual Técnico">Manual Técnico</option>
+                                <option value="Ficha Técnica">Ficha Técnica</option>
+                                <option value="Certificado">Certificado de Calibração</option>
+                                <option value="Contrato">Contrato de Manutenção</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="modal-footer border-0 pt-0">
-                        <button type="button" class="btn btn-secondary" data-bs-disabled="modal" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Equipamento</button>
-                    </div>
-                </form>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Equipamento Associado</label>
+                            <select class="form-select" id="equipamentoAssociado">
+                                <option value="Monitor Multiparamétrico">Monitor Multiparamétrico</option>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Selecionar Ficheiro</label>
+                            <input type="file" class="form-control" id="ficheiroDocumento" required>
+                        </div>
+                        <button type="submit" class="btn btn-acao-primaria w-100 py-2">Submeter Ficheiro</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/equipamentos.js"></script>
+    <script src="../../assets/js/documentacao.js"></script>
 </body>
-
 </html>

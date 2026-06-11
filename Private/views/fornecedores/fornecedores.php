@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedCare - Localizações</title>
+    <title>MedCare - Fornecedores</title>
 
     <link rel="icon" type="image/png" href="../Private/assets/img/logo.png">
 
@@ -17,7 +17,7 @@
 
     <div class="app-viewport">
         <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-            <a href="../../index.html" class="brand-header">
+            <a href="../../index.php" class="brand-header">
                 <i class="fa-solid fa-heart-pulse me-2"></i>
                 <span>MedCare Inventory <span class="navbar-text-secundario">| Hospital Backoffice</span></span>
             </a>
@@ -34,26 +34,26 @@
                 <div>
                     <div class="sidebar-section-title">Navegação Principal</div>
                     <div class="nav flex-column">
-                        <a href="../../index.html" class="nav-link">
+                        <a href="../../index.php" class="nav-link">
                             <i class="fa-solid fa-table-columns me-3"></i>Dashboard
                         </a>
                     </div>
 
                     <div class="sidebar-section-title">Gestão de Ativos</div>
                     <div class="nav flex-column">
-                        <a href="../equipamentos/equipamentos.html" class="nav-link">
+                        <a href="../equipamentos/equipamentos.php" class="nav-link">
                             <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
                         </a>
-                        <a href="../fornecedores/fornecedores.html" class="nav-link">
+                        <a href="fornecedores.php" class="nav-link active">
                             <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
                         </a>
-                        <a href="../documentacao/documentacao.html" class="nav-link">
+                        <a href="../documentacao/documentacao.php" class="nav-link">
                             <i class="fa-solid fa-bell me-3"></i>Documentação
                         </a>
-                        <a href="../garantias/garantias.html" class="nav-link">
+                        <a href="../garantias/garantias.php" class="nav-link">
                             <i class="fa-solid fa-file-invoice me-3"></i>Garantias
                         </a>
-                        <a href="localizacoes.html" class="nav-link active">
+                        <a href="../localizacoes/localizacoes.php" class="nav-link">
                             <i class="fa-solid fa-file-lines me-3"></i>Localizações
                         </a>
                     </div>
@@ -61,7 +61,7 @@
 
                 <div>
                     <div class="sidebar-section-title">Sessão</div>
-                    <a href="../../../Public/index.html" class="nav-link mb-3 link-frontoffice">
+                    <a href="../../../Public/index.php" class="nav-link mb-3 link-frontoffice">
                         <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Ir para Front-Office
                     </a>
                     <div class="sidebar-user-zone border-top border-light border-opacity-25 pt-3 d-flex align-items-center justify-content-between">
@@ -77,11 +77,11 @@
             <main class="main-content-wrapper">
                 <div class="d-flex justify-content-between align-items-start mb-4">
                     <div>
-                        <h1 class="fw-bold h2 mb-1 text-dark">Gestão de Localizações</h1>
-                        <p class="text-muted small mb-0">Controlo de edifícios, pisos, salas e serviços hospitalares.</p>
+                        <h1 class="fw-bold h2 mb-1 text-dark">Gestão de Fornecedores</h1>
+                        <p class="text-muted small mb-0">Registo e contactos de entidades fornecedoras de dispositivos médicos.</p>
                     </div>
-                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalLocalizacao">
-                        <i class="fa-solid fa-plus me-2"></i>Adicionar Localização
+                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalFornecedor">
+                        <i class="fa-solid fa-plus me-2"></i>Adicionar Fornecedor
                     </button>
                 </div>
 
@@ -90,21 +90,21 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th class="ps-4">Código</th>
-                                    <th>Serviço / Sala</th>
-                                    <th>Piso</th>
-                                    <th>Edifício</th>
-                                    <th>Responsável do Setor</th>
+                                    <th class="ps-4">NIF</th>
+                                    <th>Empresa / Entidade</th>
+                                    <th>Telemóvel / Contacto</th>
+                                    <th>Email</th>
+                                    <th>País</th>
                                     <th class="text-end pe-4">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tabelaLocalizacoes">
+                            <tbody id="tabelaFornecedores">
                                 <tr>
-                                    <td class="ps-4 text-muted">UCI-P1</td>
-                                    <td><strong>Unidade de Cuidados Intensivos</strong></td>
-                                    <td>Piso 1</td>
-                                    <td>Edifício Central (A)</td>
-                                    <td>Dr. Silva Santos</td>
+                                    <td class="ps-4 text-muted">501234567</td>
+                                    <td><strong>Philips Medical Systems</strong></td>
+                                    <td>+351 210 000 000</td>
+                                    <td>pt.support@philips.com</td>
+                                    <td>Portugal</td>
                                     <td class="text-end pe-4">
                                         <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen"></i></button>
                                         <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
@@ -118,36 +118,36 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalLocalizacao" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalFornecedor" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header bg-primary text-white border-0">
-                    <h5 class="modal-title fw-bold">Nova Localização</h5>
+                    <h5 class="modal-title fw-bold">Novo Fornecedor</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form id="formLocalizacao">
+                    <form id="formFornecedor">
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Código Interno</label>
-                            <input type="text" class="form-control" id="codLocalizacao" placeholder="Ex: UCI-P1, REAB-P0" required>
+                            <label class="form-label fw-semibold">Nome da Entidade</label>
+                            <input type="text" class="form-control" id="nomeFornecedor" placeholder="Ex: Siemens Healthineers" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Nome do Serviço / Sala</label>
-                            <input type="text" class="form-control" id="nomeLocalizacao" placeholder="Ex: Bloco Operatório 2" required>
+                            <label class="form-label fw-semibold">NIF</label>
+                            <input type="text" class="form-control" id="nifFornecedor" placeholder="Ex: 500000000" maxlength="9" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Piso</label>
-                            <input type="text" class="form-control" id="pisoLocalizacao" placeholder="Ex: Piso 0, Piso 1, Cave" required>
+                            <label class="form-label fw-semibold">Contacto Telefónico</label>
+                            <input type="tel" class="form-control" id="telFornecedor" placeholder="Ex: 910000000" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Edifício</label>
-                            <input type="text" class="form-control" id="edificioLocalizacao" placeholder="Ex: Edifício de Consultas" required>
+                            <label class="form-label fw-semibold">Email de Contacto</label>
+                            <input type="email" class="form-control" id="emailFornecedor" placeholder="Ex: info@empresa.com" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Responsável do Setor</label>
-                            <input type="text" class="form-control" id="responsavelLocalizacao" placeholder="Ex: Enf. Chefe Maria Lima" required>
+                            <label class="form-label fw-semibold">País</label>
+                            <input type="text" class="form-control" id="paisFornecedor" placeholder="Ex: Portugal" required>
                         </div>
-                        <button type="submit" class="btn btn-acao-primaria w-100 py-2">Guardar Localização</button>
+                        <button type="submit" class="btn btn-acao-primaria w-100 py-2">Guardar Fornecedor</button>
                     </form>
                 </div>
             </div>
@@ -155,6 +155,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/localizacoes.js"></script>
+    <script src="../../assets/js/fornecedores.js"></script>
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedCare - Documentação</title>
-    
+    <title>MedCare - Garantias</title>
+
     <link rel="icon" type="image/png" href="../Private/assets/img/logo.png">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -16,7 +17,7 @@
 
     <div class="app-viewport">
         <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-            <a href="../../index.html" class="brand-header">
+            <a href="../../index.php" class="brand-header">
                 <i class="fa-solid fa-heart-pulse me-2"></i>
                 <span>MedCare Inventory <span class="navbar-text-secundario">| Hospital Backoffice</span></span>
             </a>
@@ -33,26 +34,26 @@
                 <div>
                     <div class="sidebar-section-title">Navegação Principal</div>
                     <div class="nav flex-column">
-                        <a href="../../index.html" class="nav-link">
+                        <a href="../../index.php" class="nav-link">
                             <i class="fa-solid fa-table-columns me-3"></i>Dashboard
                         </a>
                     </div>
 
                     <div class="sidebar-section-title">Gestão de Ativos</div>
                     <div class="nav flex-column">
-                        <a href="../equipamentos/equipamentos.html" class="nav-link">
+                        <a href="../equipamentos/equipamentos.php" class="nav-link">
                             <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
                         </a>
-                        <a href="../fornecedores/fornecedores.html" class="nav-link">
+                        <a href="../fornecedores/fornecedores.php" class="nav-link">
                             <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
                         </a>
-                        <a href="documentacao.html" class="nav-link active">
+                        <a href="../documentacao/documentacao.php" class="nav-link">
                             <i class="fa-solid fa-bell me-3"></i>Documentação
                         </a>
-                        <a href="../garantias/garantias.html" class="nav-link">
+                        <a href="garantias.php" class="nav-link active">
                             <i class="fa-solid fa-file-invoice me-3"></i>Garantias
                         </a>
-                        <a href="../localizacoes/localizacoes.html" class="nav-link">
+                        <a href="../localizacoes/localizacoes.php" class="nav-link">
                             <i class="fa-solid fa-file-lines me-3"></i>Localizações
                         </a>
                     </div>
@@ -60,7 +61,7 @@
 
                 <div>
                     <div class="sidebar-section-title">Sessão</div>
-                    <a href="../../../Public/index.html" class="nav-link mb-3 link-frontoffice">
+                    <a href="../../../Public/index.php" class="nav-link mb-3 link-frontoffice">
                         <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Ir para Front-Office
                     </a>
                     <div class="sidebar-user-zone border-top border-light border-opacity-25 pt-3 d-flex align-items-center justify-content-between">
@@ -76,11 +77,11 @@
             <main class="main-content-wrapper">
                 <div class="d-flex justify-content-between align-items-start mb-4">
                     <div>
-                        <h1 class="fw-bold h2 mb-1 text-dark">Documentação Técnica</h1>
-                        <p class="text-muted small mb-0">Repositório de manuais, diretivas e certificados de calibração.</p>
+                        <h1 class="fw-bold h2 mb-1 text-dark">Controlo de Garantias</h1>
+                        <p class="text-muted small mb-0">Gestão de prazos de cobertura e assistência técnica contratada.</p>
                     </div>
-                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalDocumento">
-                        <i class="fa-solid fa-plus me-2"></i>Submeter Documento
+                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalGarantia">
+                        <i class="fa-solid fa-plus me-2"></i>Registar Garantia
                     </button>
                 </div>
 
@@ -89,23 +90,23 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th class="ps-4">Nome do Documento</th>
-                                    <th>Tipo</th>
-                                    <th>Equipamento Alvo</th>
-                                    <th>Data de Upload</th>
-                                    <th>Formato</th>
+                                    <th class="ps-4">Equipamento</th>
+                                    <th>Fornecedor</th>
+                                    <th>Início da Cobertura</th>
+                                    <th>Fim da Cobertura</th>
+                                    <th>Estado</th>
                                     <th class="text-end pe-4">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tabelaDocumentos">
+                            <tbody id="tabelaGarantias">
                                 <tr>
-                                    <td class="ps-4"><strong>Manual_Utilizador_V1.pdf</strong></td>
-                                    <td>Manual Técnico</td>
-                                    <td>Monitor Multiparamétrico</td>
-                                    <td>08/06/2026</td>
-                                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">PDF</span></td>
+                                    <td class="ps-4"><strong>Monitor Multiparamétrico</strong></td>
+                                    <td>Philips Medical Systems</td>
+                                    <td>01/01/2025</td>
+                                    <td>01/01/2028</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle px-3">Ativa</span></td>
                                     <td class="text-end pe-4">
-                                        <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-download"></i></button>
+                                        <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen"></i></button>
                                         <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -117,39 +118,36 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalDocumento" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalGarantia" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header bg-primary text-white border-0">
-                    <h5 class="modal-title fw-bold">Novo Documento</h5>
+                    <h5 class="modal-title fw-bold">Nova Garantia</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form id="formDocumento">
+                    <form id="formGarantia">
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Título/Nome do Ficheiro</label>
-                            <input type="text" class="form-control" id="nomeDocumento" placeholder="Ex: Certificado_Calibracao_2026" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Tipo de Documento</label>
-                            <select class="form-select" id="tipoDocumento">
-                                <option value="Manual Técnico">Manual Técnico</option>
-                                <option value="Ficha Técnica">Ficha Técnica</option>
-                                <option value="Certificado">Certificado de Calibração</option>
-                                <option value="Contrato">Contrato de Manutenção</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Equipamento Associado</label>
-                            <select class="form-select" id="equipamentoAssociado">
+                            <label class="form-label fw-semibold">Equipamento</label>
+                            <select class="form-select" id="equipamentoGarantia" required>
                                 <option value="Monitor Multiparamétrico">Monitor Multiparamétrico</option>
                                 </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Selecionar Ficheiro</label>
-                            <input type="file" class="form-control" id="ficheiroDocumento" required>
+                            <label class="form-label fw-semibold">Fornecedor Responsável</label>
+                            <select class="form-select" id="fornecedorGarantia" required>
+                                <option value="Philips Medical Systems">Philips Medical Systems</option>
+                                </select>
                         </div>
-                        <button type="submit" class="btn btn-acao-primaria w-100 py-2">Submeter Ficheiro</button>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Data de Início</label>
+                            <input type="date" class="form-control" id="dataInicioGarantia" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Data de Término</label>
+                            <input type="date" class="form-control" id="dataFimGarantia" required>
+                        </div>
+                        <button type="submit" class="btn btn-acao-primaria w-100 py-2">Guardar Garantia</button>
                     </form>
                 </div>
             </div>
@@ -157,6 +155,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/documentacao.js"></script>
+    <script src="../../assets/js/garantias.js"></script>
 </body>
 </html>
