@@ -1,0 +1,74 @@
+Table Equipamento {
+  idEquipamento int [pk, increment]
+  nomeEquipamento varchar(150) [not null]
+  marca varchar(100)
+  modelo varchar(100)
+  numeroSerie varchar(100)
+  fabricante varchar(100)
+  dataAquisicao date
+  anoFabrico year
+  custoAquisicao decimal(10,2)
+  tipoEntrada varchar(20) [not null, default: 'compra', note: 'compra, doacao, aluguer, emprestimo']
+  categoria varchar(50)
+  estado varchar(20) [not null, note: 'operacional, manutencao, avariado, inativo']
+  criticidadeClinica varchar(20) [note: 'Baixa, Media, Alta, Suporte de vida']
+  ultimaManutencao date
+  proximaManutencao date
+  documentacaoStatus varchar(20)
+  observacoes text
+  idFornecedor int [ref: > Fornecedor.idFornecedor]
+  idLocalizacao int [ref: > Localizacao.idLocalizacao]
+}
+
+Table Fornecedor {
+  idFornecedor int [pk, increment]
+  nomeFornecedor varchar(150) [not null]
+  nif varchar(20)
+  contactoTelefonico varchar(20)
+  enderecoEmail varchar(150)
+  morada varchar(255)
+  website varchar(255)
+  pessoaContacto varchar(100)
+  tipoFornecedor varchar(30) [not null, note: 'fabricante, distribuidor, assistencia_tecnica, consumiveis']
+  observacoes text
+}
+
+Table Localizacao {
+  idLocalizacao int [pk, increment]
+  nomeSala varchar(100) [not null]
+  edificio varchar(100)
+  servico varchar(100)
+  piso varchar(20)
+}
+
+Table Documentacao {
+  idDocumento int [pk, increment]
+  nomeDocumento varchar(150) [not null]
+  tipoDocumento varchar(40) [not null, note: 'manual_utilizador, manual_servico, certificado_calibracao, contrato_manutencao, fatura, declaracao_conformidade, relatorio_tecnico']
+  dataDocumento date
+  dataValidade date
+  nomeFicheiro varchar(255)
+  idEquipamento int [not null, ref: > Equipamento.idEquipamento]
+  idFornecedor int [ref: > Fornecedor.idFornecedor]
+}
+
+Table Garantia {
+  idGarantia int [pk, increment]
+  dataInicio date [not null]
+  dataFim date [not null]
+  temContrato boolean [not null, default: false]
+  tipoContrato varchar(100)
+  entidadeResponsavel varchar(150)
+  periodicidade varchar(100)
+  observacoes text
+  idEquipamento int [not null, ref: > Equipamento.idEquipamento]
+}
+
+Table Utilizador {
+  idUtilizador int [pk, increment]
+  nomeUtilizador varchar(100) [not null]
+  username varchar(50) [not null, unique]
+  password varchar(255) [not null]
+  email varchar(150) [not null, unique]
+  perfil varchar(20) [not null, default: 'tecnico', note: 'administrador, tecnico']
+}
