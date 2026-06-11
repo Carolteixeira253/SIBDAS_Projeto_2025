@@ -4,152 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>medCare - Dashboard</title>
+    <title>MedCare - Dashboard</title>
 
-    <link rel="icon" type="image/png" href="../Private/assets/img/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="assets/css/1231343.css">
 </head>
 
 <body>
 
-    <div class="app-viewport">
+<div class="app-viewport">
 
-        <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-            <a href="#" class="brand-header">
-                <i class="fa-solid fa-heart-pulse me-2"></i>
-                <span>MedCare Inventory <span class="fw-light text-muted fs-6 ms-2">| Hospital Backoffice</span></span>
-            </a>
-            <div class="d-flex align-items-center">
-                <span class="badge bg-light text-dark border me-3">
-                    <i class="fa-solid fa-server text-success me-1"></i>Produção
-                </span>
-                <i class="fa-solid fa-bell text-muted fs-5 pointer me-2"></i>
+    <!-- HEADER -->
+    <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
+        <a href="index.html" class="brand-header">
+            <i class="fa-solid fa-heart-pulse me-2"></i>
+            <span>MedCare Inventory <span class="navbar-text-secundario fw-light fs-6 ms-2">| Hospital Backoffice</span></span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="badge bg-light text-dark border">
+                <i class="fa-solid fa-server text-success me-1"></i>Produção
+            </span>
+            <div class="position-relative" style="cursor:pointer;" data-bs-toggle="tooltip" title="2 alertas de garantia">
+                <i class="fa-solid fa-bell text-white fs-5"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.6rem;">2</span>
             </div>
-        </header>
-
-        <div class="content-body">
-            
-            <nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
-                <div>
-                    <div class="sidebar-section-title">Navegação Principal</div>
-                    <div class="nav flex-column">
-                        <a href="#" class="nav-link active">
-                            <i class="fa-solid fa-table-columns me-3"></i>Dashboard
-                        </a>
-                    </div>
-
-                    <div class="sidebar-section-title">Gestão de Ativos</div>
-                    <div class="nav flex-column">
-                        <a href="views/equipamentos/equipamentos.html" class="nav-link">
-                            <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
-                        </a>
-                        <a href="views/fornecedores/fornecedores.html" class="nav-link">
-                            <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
-                        </a>
-                        <a href="views/documentacao/documentacao.html" class="nav-link">
-                            <i class="fa-solid fa-bell me-3"></i>Documentação
-                        </a>
-                        <a href="views/garantias/garantias.html" class="nav-link">
-                            <i class="fa-solid fa-file-invoice me-3"></i>Garantias
-                        </a>
-                        <a href="views/localizacoes/localizacoes.html" class="nav-link">
-                            <i class="fa-solid fa-file-lines me-3"></i>Localizações
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="sidebar-section-title">Sessão</div>
-                    <a href="../Public/index.html" class="nav-link mb-3 link-frontoffice">
-                        <i class="fa-solid fa-arrow-right-from-bracket me-3"></i> Log Out
-                    </a>
-
-                    <div class="sidebar-user-zone border-top border-light border-opacity-25 pt-3 d-flex align-items-center justify-content-between">
-                        <div>
-                            <small>Utilizador</small>
-                            <strong class="text-truncate" style="max-width: 150px;">Eng. Biomédico</strong>
-                        </div>
-                        <a href="../Public/index.html" class="text-white text-opacity-75">
-                            <i class="fa-solid fa-power-off fs-5"></i>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-
-            <main class="main-content-wrapper">
-
-                <div class="d-flex justify-content-between align-items-start mb-5">
-                    <div>
-                        <h1 class="fw-bold h2 mb-1 text-dark">Dashboard</h1>
-                        <p class="text-muted small mb-0">Unidade de Saúde Central — Painel Analítico Geral</p>
-                    </div>
-                    <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm">
-                        <i class="fa-solid fa-plus me-2"></i>Novo Registo
-                    </button>
-                </div>
-
-                <div class="row g-4 mb-5">
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card-stat p-4 borda-analitica-total">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Total Equipamentos</small>
-                                    <h2 class="fw-bold mb-0 mt-1 texto-card-titulo">4</h2>
-                                </div>
-                                <i class="fa-solid fa-file-invoice text-primary text-opacity-25 fs-2"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card-stat p-4 borda-analitica-sucesso">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Operacionais</small>
-                                    <h2 class="fw-bold mb-0 mt-1 texto-estado-sucesso">3</h2>
-                                </div>
-                                <i class="fa-solid fa-circle-check text-success text-opacity-25 fs-2"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card-stat p-4 borda-analitica-alerta">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Em Manutenção</small>
-                                    <h2 class="fw-bold mb-0 mt-1 texto-estado-alerta">1</h2>
-                                </div>
-                                <i class="fa-solid fa-screwdriver-wrench text-warning text-opacity-25 fs-2"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card-stat p-4 borda-analitica-perigo">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Avariados</small>
-                                    <h2 class="fw-bold mb-0 mt-1 texto-estado-perigo">1</h2>
-                                </div>
-                                <i class="fa-solid fa-triangle-exclamation text-danger text-opacity-25 fs-2"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center text-muted pt-5 mt-5" style="font-size: 0.8rem;">
-                    © 2026 MedCare Inventory Solutions. Módulo de Engenharia Biomédica Hospitalar.
-                </div>
-            </main>
         </div>
-    </div>
+    </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <div class="content-body">
 
-</html>
+        <!-- SIDEBAR -->
+        <nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
+            <div>
+                <div class="sidebar-section-title">Navegação Principal</div>
+                <div class="nav flex-column">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fa-solid fa-table-columns me-3"></i>Dashboard
+                    </a>
+                </div>
+
+                <div class="sidebar-section-title">Gestão de Ativos</div>
+                <div class="nav flex-column">
+                    <a href="views/equipamentos/equipamentos.html" class="nav-link">
+                        <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
+                    </a>
+                    <a href="views/fornecedores/fornecedores.html" class="nav-link">
+                        <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
+                    </a>
+                    <a href="views/localizacoes/localizacoes.html" class="nav-link">
+                        <i class="fa-solid fa-location-dot me-3"></i>Localizações
+                    </a>
+                    <a href="views/documentacao/documentacao.html" class="nav-link">
+                        <i class="fa-solid fa-file-lines me-3"></i>Documentação
+                    </a>
+                    <a href="views/garantias/garantias.html" class="nav-link">
+                        <i class="fa-solid fa-file-invoice me-3"></i>Garantias
+                    </a>
+                </div>
+
+                <div class="sidebar-section-title">Configurações</div>
+                <div class="nav flex-column">
+                    <a href="views/backoffice/conteudos.html" class="nav-link">
+                        <i class="fa-solid fa-pen-to-square me-3"></i>Editar Site Público
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="sidebar-section-title">Sessão</div>
+                <a href="logout.php" class="nav-link mb-3 text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
+                </a>
+                <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
+                    <div>
+                        <small>Utilizador</small>
+                        <strong>Eng. Biomédico</strong>
+                    </div>
+                    <a href="logout.php">
+                        <i class="fa-solid fa-power-off fs-5"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content-wrapper">
+
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <h1 class="fw-bold h2 mb-1">Dashboard</h1>
+                    <p class="text-muted small mb-0">Unidade de Saúde Central — Painel Analítico Geral</p>
+                </div>
+                <a href="views/equipamentos/equipamentos.html" class="btn btn-primary fw-bold px-3 py-2">
+                    <i class="fa-solid fa-plus me-2"></i>Novo Equipamento
+                </a>
+            </div>
+
+            <!-- CARDS DE ESTATÍSTICAS -->
+            <div class="row g-4 mb-5">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card-stat p-4 borda-analitica-total">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Total Equipamentos</small>
+                                <h2 class="fw-bold mb-0 mt-1 texto-card-titulo">3</h2>
+                            </div>
+                            <i class="fa-solid fa-stethoscope text-primary opacity-25 fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card-stat p-4 borda-analitica-sucesso">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Operacionais</small>
+                                <h2 class="fw-bold mb-0 mt-1 texto-estado-sucesso">1</h2>
+                            </div>
+                            <i class="fa-solid fa-circle-check text-success opacity-25 fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card-stat p-4 borda-analitica-alerta">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Em Manutenção</small>
+                                <h2 class="fw-bold mb-0 mt-1 texto-estado-alerta">1</h2>
+                            </div>
+                            <i class="fa-solid fa-screwdriver-wrench text-warning opacity-25 fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card-stat p-4 borda-analitica-perigo">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Avariados</small>
+                                <h2 class="fw-bold mb-0 mt-1 texto-estado-perigo">1</h2>
+                            </div>
+                            <i class="fa-solid fa-triangle-exclamation text-danger opacity-25 fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRÁFICO + ALERTAS -->
+            <div class="row g-4 mb-5">
+
+                <div class="col-12 col-lg-7">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h6 class="fw-bold mb-1">Equipamentos por Categoria</h6>
+                            <p class="text-muted small mb-3">Distribuição do inventário por tipo clínico</p>
+                            <div style="position:relative; height:220px;">
+                                <canvas id="graficoCategoria" role="img" aria-label="Gráfico de barras com equipamentos por categoria"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h6 class="fw-bold mb-1">
+                                <i class="fa-solid fa-triangle-exclamation text-warning me-2"></i>
+                                Alertas de Garantia
+                            </h6>
+                            <p class="text-muted small mb-3">Garantias a expirar nos próximos 30 dias</p>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="alert alert-warning py-2 px-3 mb-0 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong class="d-block" style="font-size:0.85rem;">Monitor de Sinais Vitais</strong>
+                                        <small class="text-muted">Expira em 12 dias</small>
+                                    </div>
+                                    <span class="badge bg-warning text-dark">12 dias</span>
+                                </div>
+                                <div class="alert alert-warning py-2 px-3 mb-0 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong class="d-block" style="font-size:0.85rem;">Ventilador Pulmonar V500</strong>
+                                        <small class="text-muted">Expira em 28 dias</small>
+                                    </div>
+                                    <span class="badge bg-warning text-dark">28 dias</span>
+                                </div>
+                                <div class="alert alert-danger py-2 px-3 mb-0 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong class="d-block" style="font-size:0.85rem;">Máquina de Raio-X Móvel</strong>
+                                        <small class="text-muted">Garantia expirada</small>
+                                    </div>
+                                    <span class="badge bg-danger">Expirada</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABELA DE EQUIPAMENTOS -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h6 class="fw-bold mb-0">Últimos Equipamentos Registados</h6>
+                            <p class="text-muted small mb-0">Visão rápida do inventário recente</p>
+                        </div>
+                        <a href="views/equipamentos/equipamentos.html" class="btn btn-sm btn-outline-primary">
+                            Ver todos <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="ps-3">Equipamento</th>
+                                    <th>Categoria</th>
+                                    <th>Estado</th>
+                                    <th>Criticidade</th>
+                                    <th class="text-e
