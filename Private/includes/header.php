@@ -16,6 +16,11 @@ require_once __DIR__ . '/../../config/config.php';
     <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/css/1231343.css">
      <!-- Font Awesome (ícones) --> 
     <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/fontawesome/all.min.css">
+<!-- jQuery -->
+    <script src="/medcare-inventory-solutions/Private/assets/jQuery/jquery-3.6.0.min.js"></script>
+    <!-- DataTables CSS + JS -->
+    <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/datatables/datatables.min.css">
+    <script src="/medcare-inventory-solutions/Private/assets/datatables/datatables.min.js"></script>
 </head>
 
 <body>

@@ -40,7 +40,7 @@ $ligacao = null;
 
         <div class="card-stat border-0 shadow-sm rounded-3 overflow-hidden">
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
+                <table id="tabela-equipamentos" class="table table-hover align-middle mb-0">
                     <thead class="bg-light">
                         <tr>
                             <th class="ps-4">ID</th>
@@ -124,5 +124,30 @@ $ligacao = null;
 </div>
 
 <script src="/medcare-inventory-solutions/Private/assets/js/equipamentos.js"></script>
-
+<script>
+$(document).ready(function() {
+    $('#tabela-equipamentos').DataTable({
+        pageLength: 5,
+        pagingType: "full_numbers",
+        language: {
+            decimal: "",
+            emptyTable: "Sem dados disponíveis na tabela.",
+            info: "Mostrando _START_ até _END_ de _TOTAL_ registos",
+            infoEmpty: "Mostrando 0 até 0 de 0 registos",
+            infoFiltered: "(Filtrando _MAX_ total de registos)",
+            lengthMenu: "Mostrando _MENU_ registos por página.",
+            loadingRecords: "Carregando...",
+            processing: "Processando...",
+            search: "Filtrar:",
+            zeroRecords: "Nenhum registo encontrado.",
+            paginate: {
+                first: "Primeira",
+                last: "Última",
+                next: "Seguinte",
+                previous: "Anterior"
+            }
+        }
+    });
+});
+</script>
 <?php include '../../includes/footer.php'; ?>
