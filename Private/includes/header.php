@@ -8,15 +8,14 @@ require_once __DIR__ . '/../../config/config.php';
      <!-- Metadados --> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo APP_NAME; ?> - Dashboard</title>
+    <title><?php echo APP_NAME; ?> </title>
     <!-- Ícone do separador (favicon) --> 
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <link rel="icon" type="image/png" href="/medcare-inventory-solutions/Private/assets/img/logo.png">
     <!-- Folhas de estilo locais --> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/1231343.css">
+    <link href="/medcare-inventory-solutions/Private/assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/css/1231343.css">
      <!-- Font Awesome (ícones) --> 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/fontawesome/all.min.css">
 </head>
 
 <body>

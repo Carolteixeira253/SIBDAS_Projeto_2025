@@ -3,63 +3,8 @@
 
     <!-- HEADER /NAVBAR -->
     <?php include 'includes/nav.php'; ?>
-
     <div class="content-body">
-
-        <!-- SIDEBAR -->
-        <nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
-            <div>
-                <div class="sidebar-section-title">Navegação Principal</div>
-                <div class="nav flex-column">
-                    <a href="index.php" class="nav-link active">
-                        <i class="fa-solid fa-table-columns me-3"></i>Dashboard
-                    </a>
-                </div>
-
-                <div class="sidebar-section-title">Gestão de Ativos</div>
-                <div class="nav flex-column">
-                    <a href="views/equipamentos/equipamentos.html" class="nav-link">
-                        <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
-                    </a>
-                    <a href="views/fornecedores/fornecedores.html" class="nav-link">
-                        <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
-                    </a>
-                    <a href="views/localizacoes/localizacoes.html" class="nav-link">
-                        <i class="fa-solid fa-location-dot me-3"></i>Localizações
-                    </a>
-                    <a href="views/documentacao/documentacao.html" class="nav-link">
-                        <i class="fa-solid fa-file-lines me-3"></i>Documentação
-                    </a>
-                    <a href="views/garantias/garantias.html" class="nav-link">
-                        <i class="fa-solid fa-file-invoice me-3"></i>Garantias
-                    </a>
-                </div>
-
-                <div class="sidebar-section-title">Configurações</div>
-                <div class="nav flex-column">
-                    <a href="views/backoffice/conteudos.html" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square me-3"></i>Editar Site Público
-                    </a>
-                </div>
-            </div>
-
-            <div>
-                <div class="sidebar-section-title">Sessão</div>
-                <a href="logout.php" class="nav-link mb-3 text-danger">
-                    <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
-                </a>
-                <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
-                    <div>
-                        <small>Utilizador</small>
-                        <strong>Eng. Biomédico</strong>
-                    </div>
-                    <a href="logout.php">
-                        <i class="fa-solid fa-power-off fs-5"></i>
-                    </a>
-                </div>
-            </div>
-        </nav>
-
+    <?php include 'includes/sidebar.php'; ?>
         <!-- CONTEÚDO PRINCIPAL -->
         <main class="main-content-wrapper">
 

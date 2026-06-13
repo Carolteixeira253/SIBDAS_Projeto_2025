@@ -1,78 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedCare - Documentação</title>
-    
-    <link rel="icon" type="image/png" href="../Private/assets/img/logo.png">
+<?php include '../../includes/header.php'; ?>
+<?php include '../../includes/nav.php'; ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<div class="content-body">
 
-    <link rel="stylesheet" href="../../assets/css/1231343.css">
-</head>
-<body>
-
-    <div class="app-viewport">
-        <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-            <a href="../../index.php" class="brand-header">
-                <i class="fa-solid fa-heart-pulse me-2"></i>
-                <span>MedCare Inventory <span class="navbar-text-secundario">| Hospital Backoffice</span></span>
-            </a>
-            <div class="d-flex align-items-center">
-                <span class="badge bg-light text-dark border me-3">
-                    <i class="fa-solid fa-server text-success me-1"></i>Produção
-                </span>
-                <i class="fa-solid fa-bell text-muted fs-5 pointer me-2"></i>
-            </div>
-        </header>
-
-        <div class="content-body">
-            <nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
-                <div>
-                    <div class="sidebar-section-title">Navegação Principal</div>
-                    <div class="nav flex-column">
-                        <a href="../../index.php" class="nav-link">
-                            <i class="fa-solid fa-table-columns me-3"></i>Dashboard
-                        </a>
-                    </div>
-
-                    <div class="sidebar-section-title">Gestão de Ativos</div>
-                    <div class="nav flex-column">
-                        <a href="../equipamentos/equipamentos.php" class="nav-link">
-                            <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
-                        </a>
-                        <a href="../fornecedores/fornecedores.php" class="nav-link">
-                            <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
-                        </a>
-                        <a href="documentacao.php" class="nav-link active">
-                            <i class="fa-solid fa-bell me-3"></i>Documentação
-                        </a>
-                        <a href="../garantias/garantias.php" class="nav-link">
-                            <i class="fa-solid fa-file-invoice me-3"></i>Garantias
-                        </a>
-                        <a href="../localizacoes/localizacoes.php" class="nav-link">
-                            <i class="fa-solid fa-file-lines me-3"></i>Localizações
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="sidebar-section-title">Sessão</div>
-                    <a href="../../../Public/index.php" class="nav-link mb-3 link-frontoffice">
-                        <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Ir para Front-Office
-                    </a>
-                    <div class="sidebar-user-zone border-top border-light border-opacity-25 pt-3 d-flex align-items-center justify-content-between">
-                        <div>
-                            <small>Utilizador</small>
-                            <strong>Eng. Biomédico</strong>
-                        </div>
-                        <i class="fa-solid fa-power-off fs-5"></i>
-                    </div>
-                </div>
-            </nav>
-
+            <?php include '../../includes/sidebar.php'; ?>
+            
             <main class="main-content-wrapper">
                 <div class="d-flex justify-content-between align-items-start mb-4">
                     <div>
@@ -156,7 +88,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/documentacao.js"></script>
-</body>
-</html>
+<script src="/medcare-inventory-solutions/Private/assets/js/documentacao.js"></script>
+
+<?php include '../../includes/footer.php'; ?>

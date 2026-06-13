@@ -1,7 +1,7 @@
 <!-- HEADER -->
     <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-        <a href="index.php" class="brand-header">
-            <i class="fa-solid fa-heart-pulse me-2"></i>
+        <a href="/medcare-inventory-solutions/Private/index.php" class="brand-header">
+            <img src="/medcare-inventory-solutions/Private/assets/img/logo.png" alt="Logo MedCare" height="32" class="me-2">
             <span><?php echo APP_NAME; ?> <span class="navbar-text-secundario fw-light fs-6 ms-2">| Hospital Backoffice</span></span>
         </a>
         <div class="d-flex align-items-center gap-3">
