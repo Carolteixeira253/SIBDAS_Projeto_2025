@@ -43,9 +43,9 @@
                 <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
                     <div>
                         <small>Utilizador</small>
-                        <strong>Eng. Biomédico</strong>
+                        <strong><?= htmlspecialchars($nome) ?></strong>
                     </div>
-                    <a href="/medcare-inventory-solutions/Private/logout.php">
+                    <a href="/medcare-inventory-solutions/Public/logout.php">
                         <i class="fa-solid fa-power-off fs-5"></i>
                     </a>
                 </div>

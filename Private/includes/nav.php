@@ -1,3 +1,20 @@
+<?php
+// Verifica se a sessão ainda não foi iniciada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se o utilizador está autenticado
+if (!isset($_SESSION['utilizador'])) {
+    // Se não estiver autenticado, redireciona para o formulário de login
+    header('Location: /medcare-inventory-solutions/Public/login.php');
+    exit;
+}
+
+// A partir daqui, o utilizador está autenticado
+$nome = $_SESSION['utilizador'];
+?>
+
 <!-- HEADER -->
     <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
         <a href="/medcare-inventory-solutions/Private/index.php" class="brand-header">
