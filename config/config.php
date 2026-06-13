@@ -5,3 +5,13 @@
 define('APP_NAME', 'MedCare  Inventory Solutions');
 define('APP_VERSION', '1.0.0');
 define('APP_COPYRIGHT', '© 2026 MedCare Inventory Solutions');
+
+// URL base do projeto
+define('BASE_URL', '/medcare-inventory-solutions');
+
+// Configurações da Base de Dados
+define('DB_HOST', 'vsgate-s1.dei.isep.ipp.pt');
+define('DB_PORT', '10464');
+define('DB_NAME', 'db1231343');
+define('DB_USER', '1231343');
+define('DB_PASS', 'teixeira_343');
