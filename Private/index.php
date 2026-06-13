@@ -1,56 +1,7 @@
 <?php
-session_start();
-// SEGURANÇA: Impede que o utilizador aceda diretamente a este script.
-// Este ficheiro deve ser acedido apenas através de submissão de formulário (POST).
-// Se for acedido diretamente (por URL) recebe a informação de Acesso Inválido
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    // Redireciona para o formulário de login (interface pública)
-    header('Location: /medcare-inventory-solutions/Public/login.php');
-    // Encerra a execução do script imediatamente após o redirecionamento
-    return;
-}
+require_once 'includes/funcoes.php';
+redirect_if_not_logged();
 
-// Mostrar os dados recebidos pelo formulário através do método POST
-$username = isset($_POST['text_username']) ? $_POST['text_username'] : '';
-$password = isset($_POST['text_password']) ? $_POST['text_password'] : '';
-
-// VALIDAÇÃO
-
-$validation_errors = [];
-
-if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
-    $validation_errors[] = 'O username tem que ser um email válido.';
-}
-if (strlen($username) < 5 || strlen($username) > 50) {
-    $validation_errors[] = 'O username deve ter entre 5 e 50 caracteres.';
-}
-if (strlen($password) < 6 || strlen($password) > 12) {
-    $validation_errors[] = 'A password deve ter entre 6 e 12 caracteres.';
-}
-
-if (!empty($validation_errors)) {
-    $_SESSION['validation_errors'] = $validation_errors;
-    header('Location: /medcare-inventory-solutions/Public/login.php');
-    return;
-}
-
-// SIMULAÇÃO DE RESULTADO DE LOGIN (antes da ligação real à base de dados)
-
-// Simula o resultado que viria de uma verificação à base de dados
-// Neste caso, assume-se que o login é válido (status = 1)
-$result['status'] = 1; // 1 = login válido, 0 = inválido
-
-// Verifica se o status retornado indica login inválido
-if (!$result['status'] ) {
-    $_SESSION['server_error'] = 'Login inválido';
-    header('Location: /medcare-inventory-solutions/Public/login.php');
-    return;
-}
-// LOGIN BEM-SUCEDIDO
-$_SESSION['utilizador'] = $username;
-
-echo "Utilizador: " . $username . "<br>";
-echo "Password: " . $password;
 ?>
 
 <?php include 'includes/header.php'; ?>

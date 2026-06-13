@@ -37,7 +37,7 @@
 
             <div>
                 <div class="sidebar-section-title">Sessão</div>
-                <a href="/medcare-inventory-solutions/Private/logout.php" class="nav-link mb-3 text-danger">
+                <a href="/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
                     <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
                 </a>
                 <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">

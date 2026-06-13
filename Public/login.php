@@ -79,7 +79,7 @@ if (!empty($_SESSION['server_error'])) {
                     </div>
                 <?php endif; ?>
 
-                <form action="../private/index.php" method="POST" class="lg-form">
+                <form action="../Private/processa_login.php" method="POST" class="lg-form">
                     
                     <div class="lg-group">
                         <label for="username">Utilizador ou E-mail</label>
