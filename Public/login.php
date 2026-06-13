@@ -1,3 +1,21 @@
+<?php
+// Inicia a sessão (necessário para usar $_SESSION)
+session_start();
+
+// Inicializa a variável que irá conter os erros de validação
+$validation_errors = [];
+if (!empty($_SESSION['validation_errors'])) {
+    $validation_errors = $_SESSION['validation_errors'];
+    unset($_SESSION['validation_errors']);
+}
+
+// Inicializa a variável que irá conter erros de servidor
+$server_error = '';
+if (!empty($_SESSION['server_error'])) {
+    $server_error = $_SESSION['server_error'];
+    unset($_SESSION['server_error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -46,13 +64,28 @@
                     <p>Introduza as suas credenciais para aceder ao inventário da unidade de saúde.</p>
                 </div>
 
-                <form action="../private/index.php" method="GET" class="lg-form">
+                <!-- Mensagens de erro -->
+                <?php if (!empty($validation_errors)) : ?>
+                    <div class="alert alert-danger p-2 text-center">
+                        <?php foreach ($validation_errors as $error) : ?>
+                            <div><?= htmlspecialchars($error) ?></div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($server_error)) : ?>
+                    <div class="alert alert-danger p-2 text-center">
+                        <div><?= htmlspecialchars($server_error) ?></div>
+                    </div>
+                <?php endif; ?>
+
+                <form action="../private/index.php" method="POST" class="lg-form">
                     
                     <div class="lg-group">
                         <label for="username">Utilizador ou E-mail</label>
                         <div class="lg-input-wrapper">
                             <i class="fas fa-user lg-field-icon"></i>
-                            <input type="text" id="username" name="username" placeholder="Ex: engenharia@medcare.pt" required>
+                            <input type="text" id="username" name="text_username" placeholder="Ex: engenharia@medcare.pt" required>
                         </div>
                     </div>
 
@@ -60,7 +93,7 @@
                         <label for="password">Palavra-passe</label>
                         <div class="lg-input-wrapper">
                             <i class="fas fa-key lg-field-icon"></i>
-                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                            <input type="password" id="password" name="text_password" placeholder="••••••••" required>
                         </div>
                     </div>
 
