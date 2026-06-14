@@ -21,7 +21,7 @@ try {
         DB_PASS
     );
     $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $resultados = $ligacao->query("SELECT * FROM Equipamento")->fetchAll(PDO::FETCH_OBJ);
+    $resultados = $ligacao->query("SELECT * FROM Equipamento WHERE ativo = 1")->fetchAll(PDO::FETCH_OBJ);
     $erro = '';
 } catch (PDOException $err) {
     $erro = "Erro: " . $err->getMessage();
@@ -89,10 +89,18 @@ $ligacao = null;
                                     </td>
                                     <td><?= htmlspecialchars($equipamento->idLocalizacao ?? 'N/A') ?></td>
                                     <td class="text-end pe-4">
+                                        <!-- Ver detalhes -->
+                                        <a href="detalhes_equipamento.php?id_equipamento=<?= aes_encrypt($equipamento->idEquipamento) ?>" class="btn btn-sm btn-outline-secondary me-1">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <!-- Editar -->
                                         <a href="editar_equipamento.php?id_equipamento=<?= aes_encrypt($equipamento->idEquipamento) ?>" class="btn btn-sm btn-outline-primary me-1">
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                        <!-- Apagar -->
+                                        <a href="apagar_equipamento.php?id_equipamento=<?= aes_encrypt($equipamento->idEquipamento) ?>" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
