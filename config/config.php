@@ -15,3 +15,7 @@ define('DB_PORT', '10464');
 define('DB_NAME', 'db1231343');
 define('DB_USER', '1231343');
 define('DB_PASS', 'teixeira_343');
+
+define('OPENSSL_METHOD', 'AES-256-CBC');
+define('OPENSSL_KEY', 'H0SDRQzIGqclX2kbYBk9xspdn9U5f3Wa');
+define('OPENSSL_IV', 'BzKAbjuREsHgnw56');

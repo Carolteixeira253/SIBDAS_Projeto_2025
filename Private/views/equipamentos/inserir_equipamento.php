@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../includes/funcoes.php';
 require_once __DIR__ . '/../../../config/config.php';
 redirect_if_not_logged();
+require_once __DIR__ . '/../../includes/validacoes.php';
 
 // Verificar se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,11 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $erros = [];
 
     $nome = trim($nome);
-    if (empty($nome)) {
-        $erros[] = "O campo Nome é obrigatório.";
-    } elseif (preg_match('/\d/', $nome)) {
-        $erros[] = "O campo Nome não pode conter números.";
-    }
+    $erros = validar_nome($nome);
 
     if (empty($categoria)) {
         $erros[] = "A Categoria é obrigatória.";

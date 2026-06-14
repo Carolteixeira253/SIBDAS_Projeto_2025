@@ -89,7 +89,7 @@ $ligacao = null;
                                     </td>
                                     <td><?= htmlspecialchars($equipamento->idLocalizacao ?? 'N/A') ?></td>
                                     <td class="text-end pe-4">
-                                        <a href="editar_equipamento.php?id_equipamento=<?= $equipamento->idEquipamento ?>" class="btn btn-sm btn-outline-primary me-1">
+                                        <a href="editar_equipamento.php?id_equipamento=<?= aes_encrypt($equipamento->idEquipamento) ?>" class="btn btn-sm btn-outline-primary me-1">
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
                                         <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
