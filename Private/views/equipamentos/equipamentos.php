@@ -3,6 +3,16 @@ require_once __DIR__ . '/../../includes/funcoes.php';
 require_once __DIR__ . '/../../../config/config.php';
 redirect_if_not_logged();
 
+// Verificar se o formulário foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 1. Recolher dados
+    $nome = $_POST["nome_equipamento"] ?? "";
+    $categoria = $_POST["categoria_equipamento"] ?? "";
+
+    // Imprimir os dados recebidos (para teste)
+    echo "<p>Nome recebido: $nome | Categoria: $categoria</p>";
+}
+
 // LIGAÇÃO À BASE DE DADOS
 try {
     $ligacao = new PDO(
@@ -33,9 +43,9 @@ $ligacao = null;
                 <h1 class="fw-bold h2 mb-1 text-dark">Inventário de Equipamentos</h1>
                 <p class="text-muted small mb-0">Gestão e monitorização de dispositivos médicos.</p>
             </div>
-            <button class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalEquipamento">
+            <a href="inserir_equipamento.php" class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm">
                 <i class="fa-solid fa-plus me-2"></i>Adicionar Equipamento
-            </button>
+            </a>
         </div>
 
         <div class="card-stat border-0 shadow-sm rounded-3 overflow-hidden">
@@ -77,7 +87,7 @@ $ligacao = null;
                                         ?>
                                         <span class="badge <?= $badgeClass ?> border px-3"><?= htmlspecialchars($equipamento->estado) ?></span>
                                     </td>
-                                    <td><?= htmlspecialchars($equipamento->idLocalizacao) ?></td>
+                                    <td><?= htmlspecialchars($equipamento->idLocalizacao ?? 'N/A') ?></td>
                                     <td class="text-end pe-4">
                                         <button class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen"></i></button>
                                         <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
@@ -99,16 +109,16 @@ $ligacao = null;
                 <h5 class="modal-title fw-bold">Novo Equipamento</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <form id="formEquipamento">
+            <form id="formEquipamento" action="#" method="POST">
                 <div class="modal-body p-4">
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Nome do Equipamento</label>
-                        <input type="text" class="form-control" id="nomeEquip" placeholder="Ex: Ventilador" required>
+                        <input type="text" class="form-control" id="nomeEquip" name="nome_equipamento" placeholder="Ex: Ventilador" required value="<?= $_POST['nome_equipamento'] ?? '' ?>">
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Categoria</label>
-                        <select class="form-select" id="catEquip" required>
-                            <option value="Monitorização">Monitorização</option>
+
+                        <select class="form-select" id="catEquip" name="categoria_equipamento" required>
                             <option value="Suporte de Vida">Suporte de Vida</option>
                             <option value="Diagnóstico">Diagnóstico</option>
                         </select>
@@ -125,29 +135,29 @@ $ligacao = null;
 
 <script src="/medcare-inventory-solutions/Private/assets/js/equipamentos.js"></script>
 <script>
-$(document).ready(function() {
-    $('#tabela-equipamentos').DataTable({
-        pageLength: 5,
-        pagingType: "full_numbers",
-        language: {
-            decimal: "",
-            emptyTable: "Sem dados disponíveis na tabela.",
-            info: "Mostrando _START_ até _END_ de _TOTAL_ registos",
-            infoEmpty: "Mostrando 0 até 0 de 0 registos",
-            infoFiltered: "(Filtrando _MAX_ total de registos)",
-            lengthMenu: "Mostrando _MENU_ registos por página.",
-            loadingRecords: "Carregando...",
-            processing: "Processando...",
-            search: "Filtrar:",
-            zeroRecords: "Nenhum registo encontrado.",
-            paginate: {
-                first: "Primeira",
-                last: "Última",
-                next: "Seguinte",
-                previous: "Anterior"
+    $(document).ready(function() {
+        $('#tabela-equipamentos').DataTable({
+            pageLength: 5,
+            pagingType: "full_numbers",
+            language: {
+                decimal: "",
+                emptyTable: "Sem dados disponíveis na tabela.",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registos",
+                infoEmpty: "Mostrando 0 até 0 de 0 registos",
+                infoFiltered: "(Filtrando _MAX_ total de registos)",
+                lengthMenu: "Mostrando _MENU_ registos por página.",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                search: "Filtrar:",
+                zeroRecords: "Nenhum registo encontrado.",
+                paginate: {
+                    first: "Primeira",
+                    last: "Última",
+                    next: "Seguinte",
+                    previous: "Anterior"
+                }
             }
-        }
+        });
     });
-});
 </script>
 <?php include '../../includes/footer.php'; ?>
