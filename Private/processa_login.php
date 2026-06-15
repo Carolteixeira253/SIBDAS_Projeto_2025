@@ -31,18 +31,40 @@ if (!empty($validation_errors)) {
     return;
 }
 
-// SIMULAÇÃO BD
-$result['status'] = 1;
+// LIGAÇÃO REAL À BD
+try {
+    $ligacao = new PDO(
+        "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+        DB_USER,
+        DB_PASS
+    );
+    $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (!$result['status']) {
-    $_SESSION['server_error'] = 'Login inválido';
+    // Procurar utilizador pelo username
+    $stmt = $ligacao->prepare("SELECT * FROM Utilizador WHERE username = :username");
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+    $utilizador = $stmt->fetch(PDO::FETCH_OBJ);
+
+    // Verificar se existe e se a password está correta
+    if (!$utilizador || !password_verify($password, $utilizador->password)) {
+        $_SESSION['server_error'] = 'Login inválido. Verifique as suas credenciais.';
+        header('Location: /medcare-inventory-solutions/Public/login.php');
+        return;
+    }
+
+    // LOGIN BEM-SUCEDIDO
+    $_SESSION['utilizador'] = $utilizador->username;
+    $_SESSION['nome'] = $utilizador->nomeUtilizador;
+    $_SESSION['perfil'] = $utilizador->perfil;
+
+    $ligacao = null;
+
+    header('Location: /medcare-inventory-solutions/Private/index.php');
+    exit;
+
+} catch (PDOException $e) {
+    $_SESSION['server_error'] = 'Erro ao ligar à base de dados.';
     header('Location: /medcare-inventory-solutions/Public/login.php');
     return;
 }
-
-// LOGIN BEM-SUCEDIDO
-$_SESSION['utilizador'] = $username;
-
-header('Location: /medcare-inventory-solutions/Private/index.php');
-exit;
-?>
