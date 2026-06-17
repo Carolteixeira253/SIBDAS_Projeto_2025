@@ -2,7 +2,9 @@
 require_once __DIR__ . '/../../includes/funcoes.php';
 require_once __DIR__ . '/../../../config/config.php';
 redirect_if_not_logged();
+redirect_if_not_admin();
 
+//Desincriptar ID
 $idEncrypted = $_GET['id_equipamento'] ?? null;
 $id = aes_decrypt($idEncrypted);
 
@@ -11,6 +13,7 @@ if (!$id || !is_numeric($id)) {
     exit;
 }
 
+// Soft delete: UPDATE ativo = 0
 try {
     $ligacao = new PDO(
         "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
@@ -18,7 +21,6 @@ try {
         DB_PASS
     );
     $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $ligacao->prepare("UPDATE Equipamento SET ativo = 0 WHERE idEquipamento = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();

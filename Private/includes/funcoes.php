@@ -33,6 +33,20 @@ function logout_and_redirect($redirect_to = '/medcare-inventory-solutions/Public
     header("Location: $redirect_to");
     exit;
 }
+function is_admin()
+{
+    start_session();
+    return isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'administrador';
+}
+function redirect_if_not_admin($redirect_to = '/medcare-inventory-solutions/Private/index.php')
+{
+    start_session();
+    if (!is_admin()) {
+        header("Location: $redirect_to");
+        exit;
+    }
+}
+
 function aes_encrypt($value) {
     return bin2hex(openssl_encrypt(
         $value,
@@ -52,5 +66,15 @@ function aes_decrypt($value) {
         OPENSSL_RAW_DATA,
         OPENSSL_IV
     );
+}
+function mensagem_erro_bd()
+{
+    return '<div class="alert alert-warning d-flex align-items-center gap-3" role="alert">
+        <i class="fa-solid fa-wifi text-warning fs-4"></i>
+        <div>
+            <strong>Sem ligação à base de dados.</strong><br>
+            <small>Não foi possível carregar os dados. Verifique a sua ligação à internet e tente novamente.</small>
+        </div>
+    </div>';
 }
 ?>
