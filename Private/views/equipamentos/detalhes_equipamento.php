@@ -4,20 +4,21 @@ require_once __DIR__ . '/../../../config/config.php';
 redirect_if_not_logged();
 $_perfil = $_SESSION['perfil'] ?? 'tecnico';
 
-// Obter e desencriptar o ID
+// Desencriptar ID (Ficha 13)
 $idEncrypted = $_GET['id_equipamento'] ?? null;
 $idEquipamento = aes_decrypt($idEncrypted);
 
 if (!$idEquipamento || !is_numeric($idEquipamento)) {
-    header('Location: /medcare-inventory-solutions/Private/views/equipamentos/equipamentos.php');
+    header('Location: equipamentos.php');
     exit;
 }
-$erro = '';
-$eq = null;
-$documentos = [];
-$garantias = [];
 
-// Ligar à BD e carregar dados
+$erro    = '';
+$eq      = null;
+$documentos = [];
+$garantias  = [];
+
+// 1. Carregar equipamento principal
 try {
     $ligacao = new PDO(
         "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
@@ -25,42 +26,75 @@ try {
         DB_PASS
     );
     $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     $stmt = $ligacao->prepare("
-    SELECT e.*, l.nomeSala, l.servico, l.edificio, l.piso,
+        SELECT e.*,
+               l.nomeSala, l.servico, l.edificio, l.piso,
                f.nomeFornecedor, f.contactoTelefonico, f.enderecoEmail
         FROM Equipamento e
         LEFT JOIN Localizacao l ON e.idLocalizacao = l.idLocalizacao
-        LEFT JOIN Fornecedor f ON e.idFornecedor = f.idFornecedor
+        LEFT JOIN Fornecedor  f ON e.idFornecedor  = f.idFornecedor
         WHERE e.idEquipamento = :id
     ");
     $stmt->bindParam(':id', $idEquipamento, PDO::PARAM_INT);
     $stmt->execute();
-    $equipamento = $stmt->fetch(PDO::FETCH_ASSOC);
+    $eq = $stmt->fetch(PDO::FETCH_OBJ);
 
     if (!$eq) {
         header('Location: equipamentos.php');
         exit;
     }
-    // Documentos associados
-    $stmtDocs = $ligacao->prepare("
-        SELECT * FROM Documentacao
-        WHERE idEquipamento = :id AND ativo = 1
-        ORDER BY dataDocumento DESC
-    ");
-    // Garantias associadas
-    $stmtGar = $ligacao->prepare("
-        SELECT * FROM Garantia
-        WHERE idEquipamento = :id AND ativo = 1
-        ORDER BY dataFim DESC
-    ");
-    $stmtGar->execute([':id' => $idEquipamento]);
-    $garantias = $stmtGar->fetchAll(PDO::FETCH_OBJ);
-} catch (PDOException $e) {
+    $ligacao = null;
+} catch (PDOException $err) {
     $erro = 'bd';
 }
-$ligacao = null;
+
+// 2. Carregar documentos (try separado — não bloqueia a página se falhar)
+if (!$erro) {
+    try {
+        $ligacao = new PDO(
+            "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+            DB_USER,
+            DB_PASS
+        );
+        $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmtDocs = $ligacao->prepare("
+            SELECT * FROM Documentacao
+            WHERE idEquipamento = :id AND ativo = 1
+            ORDER BY dataDocumento DESC
+        ");
+        $stmtDocs->execute([':id' => $idEquipamento]);
+        $documentos = $stmtDocs->fetchAll(PDO::FETCH_OBJ);
+        $ligacao = null;
+    } catch (PDOException $err) {
+        $documentos = [];
+    }
+}
+
+// 3. Carregar garantias (try separado — não bloqueia a página se falhar)
+if (!$erro) {
+    try {
+        $ligacao = new PDO(
+            "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+            DB_USER,
+            DB_PASS
+        );
+        $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmtGar = $ligacao->prepare("
+            SELECT * FROM Garantia
+            WHERE idEquipamento = :id AND ativo = 1
+            ORDER BY dataFim DESC
+        ");
+        $stmtGar->execute([':id' => $idEquipamento]);
+        $garantias = $stmtGar->fetchAll(PDO::FETCH_OBJ);
+        $ligacao = null;
+    } catch (PDOException $err) {
+        $garantias = [];
+    }
+}
+
 // Badge de estado
-$estadoBadge = '';
+$estadoBadge = 'bg-secondary';
 if ($eq) {
     $estadoBadge = match ($eq->estado) {
         'operacional' => 'bg-success',
@@ -71,16 +105,18 @@ if ($eq) {
     };
 }
 ?>
-
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
 
 <div class="content-body">
     <?php include '../../includes/sidebar.php'; ?>
+
     <main class="main-content-wrapper">
+
         <?php if ($erro === 'bd'): ?>
             <?= mensagem_erro_bd() ?>
         <?php elseif ($eq): ?>
+
             <div class="d-flex justify-content-between align-items-start mb-4">
                 <div>
                     <h1 class="fw-bold h2 mb-1 text-dark">
@@ -98,8 +134,9 @@ if ($eq) {
                     <i class="fa-solid fa-arrow-left me-2"></i>Voltar
                 </a>
             </div>
-            <!-- Tabs de navegação -->
-            <ul class="nav nav-tabs mb-4" id="tabsEquipamento">
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mb-4">
                 <li class="nav-item">
                     <a class="nav-link active" data-bs-toggle="tab" href="#tab-geral">
                         <i class="fa-solid fa-info-circle me-1"></i>Informação Geral
@@ -122,12 +159,14 @@ if ($eq) {
                     </a>
                 </li>
             </ul>
+
             <div class="tab-content">
+
                 <!-- TAB: Informação Geral -->
                 <div class="tab-pane fade show active" id="tab-geral">
                     <div class="card-stat border-0 shadow-sm rounded-3 p-4">
                         <div class="row g-4">
-                            <!-- Identificação -->
+
                             <div class="col-12">
                                 <p class="secao-form-titulo">Identificação</p>
                                 <div class="row g-3">
@@ -145,7 +184,7 @@ if ($eq) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Dados Técnicos -->
+
                             <div class="col-12 secao-form">
                                 <p class="secao-form-titulo">Dados Técnicos</p>
                                 <div class="row g-3">
@@ -167,15 +206,13 @@ if ($eq) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Aquisição -->
+
                             <div class="col-12 secao-form">
                                 <p class="secao-form-titulo">Aquisição</p>
                                 <div class="row g-3">
                                     <div class="col-md-3">
                                         <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Data de Aquisição</small>
-                                        <p class="mb-0">
-                                            <?= $eq->dataAquisicao ? date('d/m/Y', strtotime($eq->dataAquisicao)) : 'N/D' ?>
-                                        </p>
+                                        <p class="mb-0"><?= $eq->dataAquisicao ? date('d/m/Y', strtotime($eq->dataAquisicao)) : 'N/D' ?></p>
                                     </div>
                                     <div class="col-md-2">
                                         <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Ano de Fabrico</small>
@@ -183,9 +220,7 @@ if ($eq) {
                                     </div>
                                     <div class="col-md-3">
                                         <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Custo de Aquisição</small>
-                                        <p class="mb-0">
-                                            <?= $eq->custoAquisicao ? number_format($eq->custoAquisicao, 2, ',', '.') . ' €' : 'N/D' ?>
-                                        </p>
+                                        <p class="mb-0"><?= $eq->custoAquisicao ? number_format($eq->custoAquisicao, 2, ',', '.') . ' €' : 'N/D' ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Tipo de Entrada</small>
@@ -193,7 +228,7 @@ if ($eq) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Estado e Localização -->
+
                             <div class="col-12 secao-form">
                                 <p class="secao-form-titulo">Estado e Localização</p>
                                 <div class="row g-3">
@@ -213,24 +248,29 @@ if ($eq) {
                                         <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Localização</small>
                                         <p class="mb-0">
                                             <?php if ($eq->nomeSala): ?>
-                                                <?= htmlspecialchars($eq->nomeSala) ?>
-                                                <?= $eq->servico ? '<br><small class="text-muted">' . htmlspecialchars($eq->servico) . '</small>' : '' ?>
-                                                <?= $eq->edificio ? '<br><small class="text-muted">' . htmlspecialchars($eq->edificio) . ($eq->piso ? ', Piso ' . htmlspecialchars($eq->piso) : '') . '</small>' : '' ?>
-                                            <?php else: ?>
-                                                N/D
-                                            <?php endif; ?>
+                                    <strong><?= htmlspecialchars($eq->nomeSala) ?></strong>
+                                    <?= $eq->servico ? '<br><small class="text-muted"><i class="fa-solid fa-briefcase-medical me-1"></i>' . htmlspecialchars($eq->servico) . '</small>' : '' ?>
+                                    <?= $eq->edificio ? '<br><small class="text-muted"><i class="fa-solid fa-building me-1"></i>' . htmlspecialchars($eq->edificio) . ($eq->piso ? ', Piso ' . htmlspecialchars($eq->piso) : '') . '</small>' : '' ?>
+                                <?php else: ?>
+                                    <span class="text-muted">Sem localização atribuída</span>
+                                    <?php if ($_perfil === 'administrador'): ?>
+                                    <br><small><a href="editar_equipamento.php?id_equipamento=<?= htmlspecialchars($idEncrypted) ?>" class="text-primary">
+                                        <i class="fa-solid fa-plus me-1"></i>Atribuir localização
+                                    </a></small>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Fornecedor (só se existir) -->
+
                             <?php if ($eq->nomeFornecedor): ?>
                                 <div class="col-12 secao-form">
                                     <p class="secao-form-titulo">Fornecedor Associado</p>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Entidade</small>
-                                            <p class="mb-0"><?= htmlspecialchars($eq->nomeFornecedor) ?></p>
+                                            <p class="mb-0"><?= htmlspecialchars($eq->nomeFornecedor ?? 'N/D') ?></p>
                                         </div>
                                         <div class="col-md-4">
                                             <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Telefone</small>
@@ -243,29 +283,31 @@ if ($eq) {
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <!-- Observações (só se existirem) -->
+
                             <?php if ($eq->observacoes): ?>
                                 <div class="col-12 secao-form">
                                     <p class="secao-form-titulo">Observações</p>
                                     <p class="mb-0 text-muted"><?= nl2br(htmlspecialchars($eq->observacoes)) ?></p>
                                 </div>
                             <?php endif; ?>
-                        </div><!-- /row -->
-                        <!-- Botões de ação (só admin, só se ativo) -->
+
+                        </div>
+
                         <?php if ($_perfil === 'administrador' && $eq->ativo == 1): ?>
                             <div class="d-flex gap-2 mt-4 pt-3 border-top">
-                                <a href="editar_equipamento.php?id_equipamento=<?= $idEncrypted ?>"
+                                <a href="editar_equipamento.php?id_equipamento=<?= htmlspecialchars($idEncrypted) ?>"
                                     class="btn btn-acao-primaria fw-bold px-4 py-2">
                                     <i class="fa-solid fa-pen me-2"></i>Editar
                                 </a>
-                                <a href="apagar_equipamento.php?id_equipamento=<?= $idEncrypted ?>"
+                                <a href="apagar_equipamento.php?id_equipamento=<?= htmlspecialchars($idEncrypted) ?>"
                                     class="btn btn-danger fw-bold px-4 py-2">
                                     <i class="fa-solid fa-trash me-2"></i>Desativar
                                 </a>
                             </div>
                         <?php endif; ?>
                     </div>
-                </div><!-- /tab-geral -->
+                </div>
+
                 <!-- TAB: Documentos -->
                 <div class="tab-pane fade" id="tab-documentos">
                     <div class="card-stat border-0 shadow-sm rounded-3 p-4">
@@ -285,7 +327,7 @@ if ($eq) {
                                 <table class="table table-hover align-middle mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="ps-3">Nome do Documento</th>
+                                            <th class="ps-3">Nome</th>
                                             <th>Tipo</th>
                                             <th>Data</th>
                                             <th>Validade</th>
@@ -295,9 +337,7 @@ if ($eq) {
                                     <tbody>
                                         <?php foreach ($documentos as $doc): ?>
                                             <tr>
-                                                <td class="ps-3">
-                                                    <strong><?= htmlspecialchars($doc->nomeDocumento) ?></strong>
-                                                </td>
+                                                <td class="ps-3"><strong><?= htmlspecialchars($doc->nomeDocumento) ?></strong></td>
                                                 <td>
                                                     <span class="badge bg-primary-subtle text-primary border border-primary-subtle">
                                                         <?= htmlspecialchars(str_replace('_', ' ', $doc->tipoDocumento)) ?>
@@ -305,15 +345,13 @@ if ($eq) {
                                                 </td>
                                                 <td><?= $doc->dataDocumento ? date('d/m/Y', strtotime($doc->dataDocumento)) : 'N/D' ?></td>
                                                 <td>
-                                                    <?php if ($doc->dataValidade): ?>
-                                                        <?php $diff = (strtotime($doc->dataValidade) - time()) / 86400; ?>
+                                                    <?php if ($doc->dataValidade):
+                                                        $diff = (strtotime($doc->dataValidade) - time()) / 86400; ?>
                                                         <span class="<?= $diff < 30 ? 'text-danger fw-bold' : 'text-muted' ?>">
                                                             <?= date('d/m/Y', strtotime($doc->dataValidade)) ?>
                                                             <?= $diff < 0 ? ' <span class="badge bg-danger">Expirado</span>' : '' ?>
                                                         </span>
-                                                    <?php else: ?>
-                                                        N/D
-                                                    <?php endif; ?>
+                                                        <?php else: ?>N/D<?php endif; ?>
                                                 </td>
                                                 <td class="text-end pe-3">
                                                     <?php if ($doc->nomeFicheiro): ?>
@@ -332,7 +370,8 @@ if ($eq) {
                             </div>
                         <?php endif; ?>
                     </div>
-                </div><!-- /tab-documentos -->
+                </div>
+
                 <!-- TAB: Garantias -->
                 <div class="tab-pane fade" id="tab-garantias">
                     <div class="card-stat border-0 shadow-sm rounded-3 p-4">
@@ -360,26 +399,21 @@ if ($eq) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($garantias as $gar): ?>
-                                            <?php
-                                            $hoje = time();
-                                            $fim = strtotime($gar->dataFim);
-                                            $diasRestantes = ($fim - $hoje) / 86400;
+                                        <?php foreach ($garantias as $gar):
+                                            $diasRestantes = (strtotime($gar->dataFim) - time()) / 86400;
                                             if ($diasRestantes < 0)
-                                                $badgeGar = '<span class="badge bg-danger">Expirada</span>';
+                                                $bg = '<span class="badge bg-danger">Expirada</span>';
                                             elseif ($diasRestantes <= 30)
-                                                $badgeGar = '<span class="badge bg-warning text-dark">Expira em ' . round($diasRestantes) . ' dias</span>';
+                                                $bg = '<span class="badge bg-warning text-dark">Expira em ' . round($diasRestantes) . ' dias</span>';
                                             else
-                                                $badgeGar = '<span class="badge bg-success">Ativa</span>';
-                                            ?>
+                                                $bg = '<span class="badge bg-success">Ativa</span>';
+                                        ?>
                                             <tr>
-                                                <td class="ps-3">
-                                                    <strong><?= htmlspecialchars($gar->entidadeResponsavel ?? 'N/D') ?></strong>
-                                                </td>
+                                                <td class="ps-3"><strong><?= htmlspecialchars($gar->entidadeResponsavel ?? 'N/D') ?></strong></td>
                                                 <td><?= htmlspecialchars($gar->tipoContrato ?? 'N/D') ?></td>
                                                 <td><?= date('d/m/Y', strtotime($gar->dataInicio)) ?></td>
                                                 <td><?= date('d/m/Y', strtotime($gar->dataFim)) ?></td>
-                                                <td><?= $badgeGar ?></td>
+                                                <td><?= $bg ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -387,8 +421,10 @@ if ($eq) {
                             </div>
                         <?php endif; ?>
                     </div>
-                </div><!-- /tab-garantias -->
+                </div>
+
             </div><!-- /tab-content -->
+
         <?php endif; ?>
     </main>
 </div>

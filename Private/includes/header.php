@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../config/config.php';
     <link rel="icon" type="image/png" href="/medcare-inventory-solutions/Private/assets/img/logo.png">
     <!-- Folhas de estilo locais --> 
     <link href="/medcare-inventory-solutions/Private/assets/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/css/1231343.css">
+    <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/css/1231343.css?v=2">
      <!-- Font Awesome (ícones) --> 
     <link rel="stylesheet" href="/medcare-inventory-solutions/Private/assets/fontawesome/all.min.css">
 <!-- jQuery -->

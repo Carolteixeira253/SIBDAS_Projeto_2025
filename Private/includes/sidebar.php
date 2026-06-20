@@ -1,3 +1,9 @@
+<?php
+start_session();
+$_nome_utilizador   = $_SESSION['nome']   ?? 'Utilizador';
+$_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
+?>
+
 <!-- SIDEBAR -->
         <nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
             <div>
@@ -36,18 +42,18 @@
             </div>
 
             <div>
-                <div class="sidebar-section-title">Sessão</div>
-                <a href="/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
-                    <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
-                </a>
-                <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
-                    <div>
-                        <small>Utilizador</small>
-                        <strong><?= htmlspecialchars($nome) ?></strong>
-                    </div>
-                    <a href="/medcare-inventory-solutions/Public/logout.php">
-                        <i class="fa-solid fa-power-off fs-5"></i>
-                    </a>
-                </div>
+        <div class="sidebar-section-title">Sessão</div>
+        <a href="/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
+            <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
+        </a>
+        <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
+            <div>
+                <small><?= $_perfil_utilizador === 'administrador' ? 'Administrador' : 'Técnico' ?></small><br>
+                <strong><?= htmlspecialchars($_nome_utilizador) ?></strong>
             </div>
-        </nav>
+            <a href="/medcare-inventory-solutions/Public/logout.php">
+                <i class="fa-solid fa-power-off fs-5"></i>
+            </a>
+        </div>
+    </div>
+</nav>

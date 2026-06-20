@@ -151,18 +151,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="invalid-feedback">A designação é obrigatória.</div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label fw-semibold">Categoria Prática <span class="text-danger">*</span></label>
-                        <select class="form-select campo-obrigatorio" id="categoria_equipamento" name="categoria_equipamento">
-                            <option value="">Escolha uma opção...</option>
-                            <?php
-                            $categorias = ['Ventilação', 'Imagem', 'Monitorização', 'Diagnóstico', 'Suporte de Vida', 'Terapia', 'Laboratório', 'Esterilização', 'Transporte', 'Reabilitação'];
-                            foreach ($categorias as $cat):
-                                $sel = (($_POST['categoria_equipamento'] ?? '') == $cat) ? 'selected' : '';
-                            ?>
-                                <option value="<?= $cat ?>" <?= $sel ?>><?= $cat ?></option>
-                            <?php endforeach; ?>
+                        <label class="form-label fw-semibold">Grau de Criticidade <span class="text-danger">*</span></label>
+                        <select class="form-select campo-obrigatorio" id="criticidade_equipamento" name="criticidade_equipamento">
+                            <option value="">Escolha...</option>
+                            <option value="Suporte de vida" <?= (($_POST['criticidade_equipamento'] ?? '') == 'Suporte de vida') ? 'selected' : '' ?>>Suporte de Vida</option>
+                            <option value="Alta" <?= (($_POST['criticidade_equipamento'] ?? '') == 'Alta')            ? 'selected' : '' ?>>Alta</option>
+                            <option value="Media" <?= (($_POST['criticidade_equipamento'] ?? '') == 'Media')           ? 'selected' : '' ?>>Média</option>
+                            <option value="Baixa" <?= (($_POST['criticidade_equipamento'] ?? '') == 'Baixa')           ? 'selected' : '' ?>>Baixa</option>
                         </select>
-                        <div class="invalid-feedback">Selecione uma categoria.</div>
+                        <div class="invalid-feedback">Selecione a criticidade.</div>
                     </div>
                 </div>
 
