@@ -33,6 +33,9 @@ Operacao B - Execucao do codigo;
 4- O site vai apresentar duas áreas: uma área publica e uma área privada;
 
 
+Admin: admin@medcare.pt / medcare2026
+Técnico: tecnico@medcare.pt / medcare2026
+
 
 
 

@@ -439,8 +439,8 @@ table.dataTable thead th.sorting_desc:after {
 /* Tabela mais espaçada */
 #tabela-equipamentos tbody td,
 .table tbody td {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
 }
 
 #tabela-equipamentos thead th,

@@ -53,9 +53,9 @@ if (!empty($_SESSION['server_error'])) {
 
     <main>
         <section class="lg-seccao">
-            
+
             <div class="lg-card">
-                
+
                 <div class="lg-header">
                     <div class="lg-icon-circle">
                         <i class="fas fa-lock"></i>
@@ -80,7 +80,7 @@ if (!empty($_SESSION['server_error'])) {
                 <?php endif; ?>
 
                 <form action="../Private/processa_login.php" method="POST" class="lg-form">
-                    
+
                     <div class="lg-group">
                         <label for="username">Utilizador ou E-mail</label>
                         <div class="lg-input-wrapper">
