@@ -77,4 +77,16 @@ function mensagem_erro_bd()
         </div>
     </div>';
 }
+function registar_log($tipo, $detalhe)
+{
+    $pasta = __DIR__ . '/../../logs';
+    if (!is_dir($pasta)) {
+        mkdir($pasta, 0755, true);
+    }
+    start_session();
+    $utilizador = $_SESSION['utilizador'] ?? 'sistema';
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
+    $linha = '[' . date('Y-m-d H:i:s') . '] | ' . strtoupper($tipo) . ' | ' . $utilizador . ' | ' . $ip . ' | ' . $detalhe . PHP_EOL;
+    file_put_contents($pasta . '/sistema.log', $linha, FILE_APPEND | LOCK_EX);
+}
 ?>
