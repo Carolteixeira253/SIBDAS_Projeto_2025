@@ -5,8 +5,8 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
 ?>
 
 <!-- SIDEBAR -->
-<nav class="sidebar-medcare p-4 d-flex flex-column justify-content-between">
-    <div>
+<nav class="sidebar-medcare">
+    <div class="sidebar-scroll-area">
         <div class="sidebar-section-title">Navegação Principal</div>
         <div class="nav flex-column">
             <a href="/medcare-inventory-solutions/Private/index.php" class="nav-link active">
@@ -40,15 +40,25 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
                     <i class="fa-solid fa-pen-to-square me-3"></i>Editar Site Público
                 </a>
             </div>
+        <?php else: ?>
+            <div class="sidebar-section-title">Perfil</div>
+            <div class="nav flex-column">
+                <div class="nav-link" style="cursor:default; opacity:0.6;">
+                    <i class="fa-solid fa-eye me-3"></i>Modo de Leitura
+                </div>
+                <div class="nav-link" style="cursor:default; opacity:0.6;">
+                    <i class="fa-solid fa-lock me-3"></i>Sem permissões de edição
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 
-    <div>
+    <div class="sidebar-bottom-zone">
         <div class="sidebar-section-title">Sessão</div>
         <a href="/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
             <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
         </a>
-        <div class="sidebar-user-zone border-top pt-3 d-flex align-items-center justify-content-between">
+        <div class="sidebar-user-zone d-flex align-items-center justify-content-between">
             <div>
                 <small><?= $_perfil_utilizador === 'administrador' ? 'Administrador' : 'Técnico' ?></small><br>
                 <strong><?= htmlspecialchars($_nome_utilizador) ?></strong>

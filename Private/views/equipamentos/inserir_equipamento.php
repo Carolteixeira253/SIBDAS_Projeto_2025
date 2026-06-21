@@ -44,12 +44,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $erros = validar_nome_equipamento($nome);
-    if (empty($numeroSerie))    $erros[] = "O Número de Série é obrigatório.";
-    if (empty($modelo))         $erros[] = "O Modelo é obrigatório.";
-    if (empty($fabricante))     $erros[] = "O Fabricante é obrigatório.";
+    if (empty($categoria)) $erros[] = "A Categoria é obrigatória.";
+    if (empty($estado))    $erros[] = "O Estado Técnico é obrigatório.";
+    if (empty($modelo))        $erros[] = "O Modelo é obrigatório.";
+    if (empty($numeroSerie))   $erros[] = "O Número de Série é obrigatório.";
+    if (empty($fabricante))    $erros[] = "O Fabricante é obrigatório.";
     if (empty($custoAquisicao)) $erros[] = "O Custo de Aquisição é obrigatório.";
-    if (empty($idLocalizacao))  $erros[] = "A Localização é obrigatória.";
-    if (empty($idFornecedor))   $erros[] = "O Fornecedor é obrigatório.";
+    if (empty($idLocalizacao)) $erros[] = "A Localização é obrigatória.";
+    if (empty($idFornecedor))  $erros[] = "O Fornecedor é obrigatório.";
+    $erros = array_merge($erros, validar_ano_fabrico($anoFabrico));
+    $erros = array_merge($erros, validar_custo($custoAquisicao));
     if (!empty($dataAquisicao)) {
         $erros = array_merge($erros, validar_data($dataAquisicao, 'Data de Aquisição'));
     }
@@ -94,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: equipamentos.php?sucesso=inserido');
             exit;
         } catch (PDOException $err) {
-            $erro_sistema = "Erro ao guardar: " . $err->getMessage();
+            $erro_sistema = "Não foi possível guardar o equipamento. Tente novamente.";
         }
     }
 }
@@ -364,24 +368,143 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
 
     const sugestoes = {
-    'ventilador': { marca: 'Dräger', modelo: 'Evita V500', fabricante: 'Dräger', categoria: 'Ventilação', criticidade: 'Suporte de vida', estado: 'operacional' },
-    'monitor': { marca: 'Philips', modelo: 'IntelliVue MP5', fabricante: 'Philips', categoria: 'Monitorização', criticidade: 'Alta', estado: 'operacional' },
-    'desfibrilhador': { marca: 'Zoll', modelo: 'R Series', fabricante: 'Zoll', categoria: 'Suporte de vida', criticidade: 'Suporte de vida', estado: 'operacional' },
-    'bomba': { marca: 'B. Braun', modelo: 'Infusomat Space', fabricante: 'B. Braun', categoria: 'Terapia', criticidade: 'Media', estado: 'operacional' },
-    'ecógrafo': { marca: 'GE Healthcare', modelo: 'Vscan Air', fabricante: 'GE Healthcare', categoria: 'Diagnóstico', criticidade: 'Alta', estado: 'operacional' },
-    'autoclave': { marca: 'Getinge', modelo: 'GSS67H', fabricante: 'Getinge', categoria: 'Esterilização', criticidade: 'Media', estado: 'operacional' },
-    'oxímetro': { marca: 'Nonin', modelo: '9590', fabricante: 'Nonin', categoria: 'Monitorização', criticidade: 'Alta', estado: 'operacional' },
-    'eletrocardiógrafo': { marca: 'Schiller', modelo: 'AT-102', fabricante: 'Schiller', categoria: 'Diagnóstico', criticidade: 'Media', estado: 'operacional' },
-    'microscópio': { marca: 'Zeiss', modelo: 'OPMI Vario', fabricante: 'Zeiss', categoria: 'Diagnóstico', criticidade: 'Alta', estado: 'operacional' },
-    'incubadora': { marca: 'Dräger', modelo: 'Isolette 8000', fabricante: 'Dräger', categoria: 'Outro', criticidade: 'Suporte de vida', estado: 'operacional' },
-    'laser': { marca: 'Lumenis', modelo: 'VersaPulse', fabricante: 'Lumenis', categoria: 'Terapia', criticidade: 'Alta', estado: 'operacional' },
-    'endoscópio': { marca: 'Olympus', modelo: 'GIF-H290', fabricante: 'Olympus', categoria: 'Diagnóstico', criticidade: 'Alta', estado: 'operacional' },
-    'pacemaker': { marca: 'Medtronic', modelo: '5392', fabricante: 'Medtronic', categoria: 'Suporte de vida', criticidade: 'Suporte de vida', estado: 'operacional' },
-    'hemodialisador': { marca: 'Fresenius', modelo: '5008S', fabricante: 'Fresenius', categoria: 'Terapia', criticidade: 'Suporte de vida', estado: 'operacional' },
-    'balança': { marca: 'SECA', modelo: '376', fabricante: 'SECA', categoria: 'Diagnóstico', criticidade: 'Baixa', estado: 'operacional' },
-    'tensiómetro': { marca: 'Omron', modelo: 'M6 Comfort', fabricante: 'Omron', categoria: 'Monitorização', criticidade: 'Media', estado: 'operacional' },
-    'cama': { marca: 'Hill-Rom', modelo: 'VersaCare', fabricante: 'Hill-Rom', categoria: 'Outro', criticidade: 'Baixa', estado: 'operacional' },
-};
+        'ventilador': {
+            marca: 'Dräger',
+            modelo: 'Evita V500',
+            fabricante: 'Dräger',
+            categoria: 'Ventilação',
+            criticidade: 'Suporte de vida',
+            estado: 'operacional'
+        },
+        'monitor': {
+            marca: 'Philips',
+            modelo: 'IntelliVue MP5',
+            fabricante: 'Philips',
+            categoria: 'Monitorização',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'desfibrilhador': {
+            marca: 'Zoll',
+            modelo: 'R Series',
+            fabricante: 'Zoll',
+            categoria: 'Suporte de vida',
+            criticidade: 'Suporte de vida',
+            estado: 'operacional'
+        },
+        'bomba': {
+            marca: 'B. Braun',
+            modelo: 'Infusomat Space',
+            fabricante: 'B. Braun',
+            categoria: 'Terapia',
+            criticidade: 'Media',
+            estado: 'operacional'
+        },
+        'ecógrafo': {
+            marca: 'GE Healthcare',
+            modelo: 'Vscan Air',
+            fabricante: 'GE Healthcare',
+            categoria: 'Diagnóstico',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'autoclave': {
+            marca: 'Getinge',
+            modelo: 'GSS67H',
+            fabricante: 'Getinge',
+            categoria: 'Esterilização',
+            criticidade: 'Media',
+            estado: 'operacional'
+        },
+        'oxímetro': {
+            marca: 'Nonin',
+            modelo: '9590',
+            fabricante: 'Nonin',
+            categoria: 'Monitorização',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'eletrocardiógrafo': {
+            marca: 'Schiller',
+            modelo: 'AT-102',
+            fabricante: 'Schiller',
+            categoria: 'Diagnóstico',
+            criticidade: 'Media',
+            estado: 'operacional'
+        },
+        'microscópio': {
+            marca: 'Zeiss',
+            modelo: 'OPMI Vario',
+            fabricante: 'Zeiss',
+            categoria: 'Diagnóstico',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'incubadora': {
+            marca: 'Dräger',
+            modelo: 'Isolette 8000',
+            fabricante: 'Dräger',
+            categoria: 'Outro',
+            criticidade: 'Suporte de vida',
+            estado: 'operacional'
+        },
+        'laser': {
+            marca: 'Lumenis',
+            modelo: 'VersaPulse',
+            fabricante: 'Lumenis',
+            categoria: 'Terapia',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'endoscópio': {
+            marca: 'Olympus',
+            modelo: 'GIF-H290',
+            fabricante: 'Olympus',
+            categoria: 'Diagnóstico',
+            criticidade: 'Alta',
+            estado: 'operacional'
+        },
+        'pacemaker': {
+            marca: 'Medtronic',
+            modelo: '5392',
+            fabricante: 'Medtronic',
+            categoria: 'Suporte de vida',
+            criticidade: 'Suporte de vida',
+            estado: 'operacional'
+        },
+        'hemodialisador': {
+            marca: 'Fresenius',
+            modelo: '5008S',
+            fabricante: 'Fresenius',
+            categoria: 'Terapia',
+            criticidade: 'Suporte de vida',
+            estado: 'operacional'
+        },
+        'balança': {
+            marca: 'SECA',
+            modelo: '376',
+            fabricante: 'SECA',
+            categoria: 'Diagnóstico',
+            criticidade: 'Baixa',
+            estado: 'operacional'
+        },
+        'tensiómetro': {
+            marca: 'Omron',
+            modelo: 'M6 Comfort',
+            fabricante: 'Omron',
+            categoria: 'Monitorização',
+            criticidade: 'Media',
+            estado: 'operacional'
+        },
+        'cama': {
+            marca: 'Hill-Rom',
+            modelo: 'VersaCare',
+            fabricante: 'Hill-Rom',
+            categoria: 'Outro',
+            criticidade: 'Baixa',
+            estado: 'operacional'
+        },
+    };
 
     document.getElementById('btn-autopreenchimento').addEventListener('click', function() {
         const nome = document.getElementById('nome_equipamento').value.toLowerCase().trim();

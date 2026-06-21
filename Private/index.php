@@ -2,6 +2,7 @@
 require_once 'includes/funcoes.php';
 require_once __DIR__ . '/../config/config.php';
 redirect_if_not_logged();
+$_perfil = $_SESSION['perfil'] ?? 'tecnico';
 
 // LIGAÇÃO À BASE DE DADOS E CÁLCULO DE ESTATÍSTICAS REAIS
 try {
@@ -98,9 +99,11 @@ function badgeCrit(?string $c): string
                     <h1 class="fw-bold h2 mb-1">Dashboard</h1>
                     <p class="text-muted small mb-0">Painel Analítico — Inventário Hospitalar</p>
                 </div>
-                <a href="views/equipamentos/inserir_equipamento.php" class="btn btn-acao-primaria fw-bold px-3 py-2">
-                    <i class="fa-solid fa-plus me-2"></i>Novo Equipamento
-                </a>
+                <?php if ($_perfil === 'administrador'): ?>
+                    <a href="views/equipamentos/inserir_equipamento.php" class="btn btn-acao-primaria">
+                        <i class="fa-solid fa-plus me-2"></i>Adicionar Equipamento
+                    </a>
+                <?php endif; ?>
             </div>
 
             <?php if (!empty($erroDashboard)): ?>

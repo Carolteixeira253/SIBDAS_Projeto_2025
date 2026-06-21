@@ -29,7 +29,7 @@ try {
     exit;
 
 } catch (PDOException $e) {
-    echo "<p class='text-danger'>Erro: " . $e->getMessage() . "</p>";
+    echo "<p class='text-danger'>Não foi possível carregar os dados do equipamento.</p>";
     exit;
 }
 ?>

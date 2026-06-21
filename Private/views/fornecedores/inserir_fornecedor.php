@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: fornecedores.php?sucesso=inserido');
             exit;
         } catch (PDOException $err) {
-            $erro_sistema = "Erro ao guardar: " . $err->getMessage();
+            $erro_sistema = "Não foi possível guardar o fornecedor. Tente novamente.";
         }
     }
 }

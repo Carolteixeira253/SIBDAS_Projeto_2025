@@ -50,4 +50,23 @@ function validar_data(string $data, string $campo = 'Data'): array
     }
     return $erros;
 }
+function validar_ano_fabrico($ano) {
+    $erros = [];
+    if (!empty($ano)) {
+        if (!is_numeric($ano) || $ano < 1900 || $ano > date('Y')) {
+            $erros[] = "O Ano de Fabrico deve estar entre 1900 e " . date('Y') . ".";
+        }
+    }
+    return $erros;
+}
+
+function validar_custo($custo) {
+    $erros = [];
+    if (!empty($custo)) {
+        if (!is_numeric($custo) || $custo < 0) {
+            $erros[] = "O Custo de Aquisição não pode ser negativo.";
+        }
+    }
+    return $erros;
+}
 ?>

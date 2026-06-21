@@ -44,7 +44,7 @@ try {
     $ligacao = null;
 
 } catch (PDOException $e) {
-    die('Erro ao exportar: ' . $e->getMessage());
+    die('Não foi possível exportar os dados. Tente novamente.');
 }
 
 // Headers HTTP que forçam o download do ficheiro

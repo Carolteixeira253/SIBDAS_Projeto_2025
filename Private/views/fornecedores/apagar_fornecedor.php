@@ -26,7 +26,7 @@ try {
         exit;
     }
 } catch (PDOException $e) {
-    echo "<p class='text-danger'>Erro: " . $e->getMessage() . "</p>";
+    echo "<p class='text-danger'>Não foi possível processar o pedido. Tente novamente.</p>";
     exit;
 }
 $ligacao = null;

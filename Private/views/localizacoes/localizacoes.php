@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../includes/funcoes.php';
 require_once __DIR__ . '/../../../config/config.php';
 redirect_if_not_logged();
+$_perfil = $_SESSION['perfil'] ?? 'tecnico';
 
 // LIGAÇÃO À BASE DE DADOS
 try {
@@ -14,7 +15,7 @@ try {
     $resultados = $ligacao->query("SELECT * FROM Localizacao WHERE ativo = 1")->fetchAll(PDO::FETCH_OBJ);
     $erro = '';
 } catch (PDOException $err) {
-    $erro = "Erro: " . $err->getMessage();
+    $erro = 'bd';
     $resultados = [];
 }
 $ligacao = null;
@@ -31,9 +32,11 @@ $ligacao = null;
                     <h1 class="fw-bold h2 mb-1 text-dark">Gestão de Localizações</h1>
                     <p class="text-muted small mb-0">Controlo de edifícios, pisos, salas e serviços hospitalares.</p>
                 </div>
-                <a href="inserir_localizacao.php" class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm">
-                    <i class="fa-solid fa-plus me-2"></i>Adicionar Localização
-                </a>
+                <?php if ($_perfil === 'administrador'): ?>
+                    <a href="inserir_localizacao.php" class="btn btn-acao-primaria fw-bold px-3 py-2 shadow-sm">
+                        <i class="fa-solid fa-plus me-2"></i>Adicionar Localização
+                    </a>
+                <?php endif; ?>
             </div>
 
             <!-- Barra de pesquisa -->

@@ -236,7 +236,7 @@ $badgeCrit = match ($eq->criticidadeClinica ?? '') {
                                     </a>
                                 </p>
                             </div>
-                            <?php if ($eq->website): ?>
+                            <?php if (!empty($eq->website)): ?>
                             <div class="col-md-4">
                                 <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Website</small>
                                 <p class="mb-0">
@@ -246,7 +246,7 @@ $badgeCrit = match ($eq->criticidadeClinica ?? '') {
                                 </p>
                             </div>
                             <?php endif; ?>
-                            <?php if ($eq->pessoaContacto): ?>
+                            <?php if (!empty($eq->pessoaContacto)): ?>
                             <div class="col-md-4">
                                 <small class="text-muted text-uppercase fw-bold" style="font-size:0.72rem;">Pessoa de Contacto</small>
                                 <p class="mb-0"><?= htmlspecialchars($eq->pessoaContacto) ?></p>
