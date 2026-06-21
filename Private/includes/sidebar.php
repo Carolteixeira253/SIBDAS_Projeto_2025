@@ -34,21 +34,17 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
         </div>
 
         <?php if (is_admin()): ?>
+            <div class="sidebar-section-title">Administração</div>
+            <div class="nav flex-column">
+                <a href="/medcare-inventory-solutions/Private/views/logs/logs.php" class="nav-link">
+                    <i class="fa-solid fa-list-check me-3"></i>Logs do Sistema
+                </a>
+            </div>
             <div class="sidebar-section-title">Configurações</div>
             <div class="nav flex-column">
                 <a href="/medcare-inventory-solutions/Private/views/backoffice/conteudos.php" class="nav-link">
                     <i class="fa-solid fa-pen-to-square me-3"></i>Editar Site Público
                 </a>
-            </div>
-        <?php else: ?>
-            <div class="sidebar-section-title">Perfil</div>
-            <div class="nav flex-column">
-                <div class="nav-link" style="cursor:default; opacity:0.6;">
-                    <i class="fa-solid fa-eye me-3"></i>Modo de Leitura
-                </div>
-                <div class="nav-link" style="cursor:default; opacity:0.6;">
-                    <i class="fa-solid fa-lock me-3"></i>Sem permissões de edição
-                </div>
             </div>
         <?php endif; ?>
     </div>

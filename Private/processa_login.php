@@ -1,5 +1,6 @@
 <?php
-require_once 'includes/funcoes.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/includes/funcoes.php';
 start_session();
 
 // SEGURANÇA: só aceita POST
@@ -49,6 +50,7 @@ try {
     // Verificar se existe e se a password está correta
     if (!$utilizador || !password_verify($password, $utilizador->password)) {
         $_SESSION['server_error'] = 'Login inválido. Verifique as suas credenciais.';
+        registar_log('ERRO', 'Tentativa de login falhada para: ' . $username);
         header('Location: /medcare-inventory-solutions/Public/login.php');
         return;
     }
@@ -57,12 +59,12 @@ try {
     $_SESSION['utilizador'] = $utilizador->username;
     $_SESSION['nome'] = $utilizador->nomeUtilizador;
     $_SESSION['perfil'] = $utilizador->perfil;
+    registar_log('LOGIN', 'Login efectuado por ' . $utilizador->username);
 
     $ligacao = null;
 
     header('Location: /medcare-inventory-solutions/Private/index.php');
     exit;
-
 } catch (PDOException $e) {
     $_SESSION['server_error'] = 'Erro ao ligar à base de dados.';
     header('Location: /medcare-inventory-solutions/Public/login.php');

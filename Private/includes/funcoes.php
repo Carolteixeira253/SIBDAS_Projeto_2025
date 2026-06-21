@@ -47,7 +47,8 @@ function redirect_if_not_admin($redirect_to = '/medcare-inventory-solutions/Priv
     }
 }
 
-function aes_encrypt($value) {
+function aes_encrypt($value)
+{
     return bin2hex(openssl_encrypt(
         $value,
         OPENSSL_METHOD,
@@ -57,7 +58,8 @@ function aes_encrypt($value) {
     ));
 }
 
-function aes_decrypt($value) {
+function aes_decrypt($value)
+{
     if (!is_string($value) || strlen($value) % 2 !== 0) return false;
     return openssl_decrypt(
         hex2bin($value),
@@ -80,6 +82,7 @@ function mensagem_erro_bd()
 function registar_log($tipo, $detalhe)
 {
     $pasta = __DIR__ . '/../../logs';
+
     if (!is_dir($pasta)) {
         mkdir($pasta, 0755, true);
     }
@@ -89,4 +92,3 @@ function registar_log($tipo, $detalhe)
     $linha = '[' . date('Y-m-d H:i:s') . '] | ' . strtoupper($tipo) . ' | ' . $utilizador . ' | ' . $ip . ' | ' . $detalhe . PHP_EOL;
     file_put_contents($pasta . '/sistema.log', $linha, FILE_APPEND | LOCK_EX);
 }
-?>
