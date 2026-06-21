@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // Verifica se o utilizador está autenticado
 if (!isset($_SESSION['utilizador'])) {
     // Se não estiver autenticado, redireciona para o formulário de login
-    header('Location: /medcare-inventory-solutions/Public/login.php');
+    header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
     exit;
 }
 
@@ -17,8 +17,8 @@ $nome = $_SESSION['utilizador'];
 
 <!-- HEADER -->
     <header class="navbar-medcare d-flex align-items-center justify-content-between shadow-sm">
-        <a href="/medcare-inventory-solutions/Private/index.php" class="brand-header">
-            <img src="/medcare-inventory-solutions/Private/assets/img/logo.png" alt="Logo MedCare" height="32" class="me-2">
+        <a href="/sibdas/1231343/medcare-inventory-solutions/Private/index.php" class="brand-header">
+            <img src="/sibdas/1231343/medcare-inventory-solutions/Private/assets/img/logo.png" alt="Logo MedCare" height="32" class="me-2">
             <span><?php echo APP_NAME; ?> <span class="navbar-text-secundario fw-light fs-6 ms-2">| Hospital Backoffice</span></span>
         </a>
         <div class="d-flex align-items-center gap-3">

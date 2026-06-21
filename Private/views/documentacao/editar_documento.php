@@ -228,7 +228,7 @@ function sel($campo, $bd, $valor) {
                             <i class="fa-solid fa-file-pdf text-danger fs-2"></i>
                             <div>
                                 <p class="fw-semibold mb-1"><?= htmlspecialchars($documento->nomeFicheiro) ?></p>
-                                <a href="/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
+                                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
                                     target="_blank" class="btn btn-sm btn-outline-primary">
                                     <i class="fa-solid fa-file-pdf me-1"></i>Abrir PDF actual
                                 </a>

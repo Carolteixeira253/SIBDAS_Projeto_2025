@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 // REDIRECIONAMENTO PARA O LOGIN
-header('Location: /medcare-inventory-solutions/Public/login.php');
+header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
 return;
 ?>

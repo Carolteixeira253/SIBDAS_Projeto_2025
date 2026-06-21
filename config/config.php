@@ -7,7 +7,7 @@ define('APP_VERSION', '1.0.0');
 define('APP_COPYRIGHT', '© 2026 MedCare Inventory Solutions');
 
 // URL base do projeto
-define('BASE_URL', '/medcare-inventory-solutions');
+define('BASE_URL', '/sibdas/1231343/medcare-inventory-solutions');
 
 // Configurações da Base de Dados
 define('DB_HOST', 'vsgate-s1.dei.isep.ipp.pt');

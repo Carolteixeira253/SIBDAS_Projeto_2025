@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="fw-bold h2 mb-1">Editar Site Público</h1>
             <p class="text-muted small mb-0">Actualize os conteúdos apresentados na área pública do sistema.</p>
         </div>
-        <a href="/medcare-inventory-solutions/Public/index.php" target="_blank" class="btn btn-outline-secondary px-3 py-2">
+        <a href="/sibdas/1231343/medcare-inventory-solutions/Public/index.php" target="_blank" class="btn btn-outline-secondary px-3 py-2">
             <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Ver Site Público
         </a>
     </div>
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit" class="btn btn-acao-primaria fw-bold py-2">
                         <i class="fa-solid fa-floppy-disk me-2"></i>Guardar Alterações
                     </button>
-                    <a href="/medcare-inventory-solutions/Public/index.php" target="_blank"
+                    <a href="/sibdas/1231343/medcare-inventory-solutions/Public/index.php" target="_blank"
                         class="btn btn-outline-secondary py-2">
                         <i class="fa-solid fa-eye me-2"></i>Pré-visualizar Site
                     </a>

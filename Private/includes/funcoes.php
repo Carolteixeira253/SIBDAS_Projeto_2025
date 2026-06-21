@@ -15,7 +15,7 @@ function check_session()
 }
 
 // Redireciona automaticamente se não houver sessão iniciada
-function redirect_if_not_logged($redirect_to = '/medcare-inventory-solutions/Public/login.php')
+function redirect_if_not_logged($redirect_to = '/sibdas/1231343/medcare-inventory-solutions/Public/login.php')
 {
     start_session();
     if (!check_session()) {
@@ -25,7 +25,7 @@ function redirect_if_not_logged($redirect_to = '/medcare-inventory-solutions/Pub
 }
 
 // Termina a sessão e redireciona
-function logout_and_redirect($redirect_to = '/medcare-inventory-solutions/Public/login.php')
+function logout_and_redirect($redirect_to = '/sibdas/1231343/medcare-inventory-solutions/Public/login.php')
 {
     start_session();
     session_unset();
@@ -38,7 +38,7 @@ function is_admin()
     start_session();
     return isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'administrador';
 }
-function redirect_if_not_admin($redirect_to = '/medcare-inventory-solutions/Private/index.php')
+function redirect_if_not_admin($redirect_to = '/sibdas/1231343/medcare-inventory-solutions/Private/index.php')
 {
     start_session();
     if (!is_admin()) {

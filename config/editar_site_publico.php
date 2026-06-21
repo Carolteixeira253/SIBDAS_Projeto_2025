@@ -87,7 +87,7 @@ function cfg($key, $configs)
                     Os campos com <span class="text-danger">*</span> são obrigatórios.
                 </p>
             </div>
-            <a href="/medcare-inventory-solutions/Public/index.php" target="_blank"
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Public/index.php" target="_blank"
                 class="btn btn-outline-primary fw-bold px-3 py-2">
                 <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Ver Site Público
             </a>
@@ -194,7 +194,7 @@ function cfg($key, $configs)
                 </div>
             </div><!-- /card -->
             <div class="d-flex justify-content-end gap-2">
-                <a href="/medcare-inventory-solutions/Private/index.php"
+                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/index.php"
                     class="btn btn-outline-secondary px-4 py-2">
                     <i class="fa-solid fa-xmark me-2"></i>Cancelar
                 </a>

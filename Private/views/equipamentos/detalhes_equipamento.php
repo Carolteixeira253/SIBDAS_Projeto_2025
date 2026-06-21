@@ -379,7 +379,7 @@ $badgeCrit = match ($eq->criticidadeClinica ?? '') {
                                         </td>
                                         <td class="text-end pe-3">
                                             <?php if ($doc->nomeFicheiro): ?>
-                                                <a href="/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($doc->nomeFicheiro) ?>"
+                                                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($doc->nomeFicheiro) ?>"
                                                     target="_blank" class="btn btn-sm btn-outline-primary">
                                                     <i class="fa-solid fa-file-pdf me-1"></i>Abrir
                                                 </a>

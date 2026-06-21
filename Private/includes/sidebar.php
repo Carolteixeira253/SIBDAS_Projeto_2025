@@ -9,26 +9,26 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
     <div class="sidebar-scroll-area">
         <div class="sidebar-section-title">Navegação Principal</div>
         <div class="nav flex-column">
-            <a href="/medcare-inventory-solutions/Private/index.php" class="nav-link active">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/index.php" class="nav-link active">
                 <i class="fa-solid fa-table-columns me-3"></i>Dashboard
             </a>
         </div>
 
         <div class="sidebar-section-title">Gestão de Ativos</div>
         <div class="nav flex-column">
-            <a href="/medcare-inventory-solutions/Private/views/equipamentos/equipamentos.php" class="nav-link">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/equipamentos/equipamentos.php" class="nav-link">
                 <i class="fa-solid fa-stethoscope me-3"></i>Equipamentos
             </a>
-            <a href="/medcare-inventory-solutions/Private/views/fornecedores/fornecedores.php" class="nav-link">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/fornecedores/fornecedores.php" class="nav-link">
                 <i class="fa-solid fa-truck-field me-3"></i>Fornecedores
             </a>
-            <a href="/medcare-inventory-solutions/Private/views/localizacoes/localizacoes.php" class="nav-link">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/localizacoes/localizacoes.php" class="nav-link">
                 <i class="fa-solid fa-location-dot me-3"></i>Localizações
             </a>
-            <a href="/medcare-inventory-solutions/Private/views/documentacao/documentacao.php" class="nav-link">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/documentacao/documentacao.php" class="nav-link">
                 <i class="fa-solid fa-file-lines me-3"></i>Documentação
             </a>
-            <a href="/medcare-inventory-solutions/Private/views/garantias/garantias.php" class="nav-link">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/garantias/garantias.php" class="nav-link">
                 <i class="fa-solid fa-file-invoice me-3"></i>Garantias
             </a>
         </div>
@@ -36,13 +36,13 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
         <?php if (is_admin()): ?>
             <div class="sidebar-section-title">Administração</div>
             <div class="nav flex-column">
-                <a href="/medcare-inventory-solutions/Private/views/logs/logs.php" class="nav-link">
+                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/logs/logs.php" class="nav-link">
                     <i class="fa-solid fa-list-check me-3"></i>Logs do Sistema
                 </a>
             </div>
             <div class="sidebar-section-title">Configurações</div>
             <div class="nav flex-column">
-                <a href="/medcare-inventory-solutions/Private/views/backoffice/conteudos.php" class="nav-link">
+                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/views/backoffice/conteudos.php" class="nav-link">
                     <i class="fa-solid fa-pen-to-square me-3"></i>Editar Site Público
                 </a>
             </div>
@@ -51,7 +51,7 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
 
     <div class="sidebar-bottom-zone">
         <div class="sidebar-section-title">Sessão</div>
-        <a href="/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
+        <a href="/sibdas/1231343/medcare-inventory-solutions/Public/logout.php" class="nav-link mb-3 text-danger">
             <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>Terminar Sessão
         </a>
         <div class="sidebar-user-zone d-flex align-items-center justify-content-between">
@@ -59,7 +59,7 @@ $_perfil_utilizador = $_SESSION['perfil'] ?? 'tecnico';
                 <small><?= $_perfil_utilizador === 'administrador' ? 'Administrador' : 'Técnico' ?></small><br>
                 <strong><?= htmlspecialchars($_nome_utilizador) ?></strong>
             </div>
-            <a href="/medcare-inventory-solutions/Public/logout.php">
+            <a href="/sibdas/1231343/medcare-inventory-solutions/Public/logout.php">
                 <i class="fa-solid fa-power-off fs-5"></i>
             </a>
         </div>

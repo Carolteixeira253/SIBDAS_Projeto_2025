@@ -5,7 +5,7 @@ start_session();
 
 // SEGURANÇA: só aceita POST
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('Location: /medcare-inventory-solutions/Public/login.php');
+    header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
     return;
 }
 
@@ -28,7 +28,7 @@ if (strlen($password) < 6 || strlen($password) > 12) {
 
 if (!empty($validation_errors)) {
     $_SESSION['validation_errors'] = $validation_errors;
-    header('Location: /medcare-inventory-solutions/Public/login.php');
+    header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
     return;
 }
 
@@ -51,7 +51,7 @@ try {
     if (!$utilizador || !password_verify($password, $utilizador->password)) {
         $_SESSION['server_error'] = 'Login inválido. Verifique as suas credenciais.';
         registar_log('ERRO', 'Tentativa de login falhada para: ' . $username);
-        header('Location: /medcare-inventory-solutions/Public/login.php');
+        header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
         return;
     }
 
@@ -63,10 +63,10 @@ try {
 
     $ligacao = null;
 
-    header('Location: /medcare-inventory-solutions/Private/index.php');
+    header('Location: /sibdas/1231343/medcare-inventory-solutions/Private/index.php');
     exit;
 } catch (PDOException $e) {
     $_SESSION['server_error'] = 'Erro ao ligar à base de dados.';
-    header('Location: /medcare-inventory-solutions/Public/login.php');
+    header('Location: /sibdas/1231343/medcare-inventory-solutions/Public/login.php');
     return;
 }

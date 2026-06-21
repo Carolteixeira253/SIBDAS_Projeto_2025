@@ -156,7 +156,7 @@ $ligacao = null;
                                                 </td>
                                                 <td>
                                                     <?php if ($doc->nomeFicheiro): ?>
-                                                        <a href="/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($doc->nomeFicheiro) ?>"
+                                                        <a href="/sibdas/1231343/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($doc->nomeFicheiro) ?>"
                                                             target="_blank" class="btn btn-sm btn-outline-danger" title="Abrir PDF">
                                                             <i class="fa-solid fa-file-pdf me-1"></i>PDF
                                                         </a>

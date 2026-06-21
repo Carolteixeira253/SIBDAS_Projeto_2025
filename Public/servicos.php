@@ -1,3 +1,22 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+$configs = [];
+try {
+    $ligacao = new PDO(
+        "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+        DB_USER, DB_PASS
+    );
+    $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $rows = $ligacao->query("SELECT chave, valor FROM Configuracao")->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rows as $row) {
+        $configs[$row->chave] = $row->valor;
+    }
+    $ligacao = null;
+} catch (PDOException $err) {
+    $configs = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -100,7 +119,7 @@
 
     <footer class="footer-container">
         <div class="footer-section">
-            <p>&copy; 2026 MedCare Inventory Solutions. Todos os direitos reservados.</p>
+            <p>&copy; 2026 <?= htmlspecialchars($configs['nome_hospital'] ?? 'MedCare Inventory Solutions') ?>. Todos os direitos reservados.</p>
         </div>
     </footer>
 

@@ -144,11 +144,11 @@ $expiraBreve = $documento->dataValidade && !$expirado && (strtotime($documento->
                         <div>
                             <p class="fw-semibold mb-2"><?= htmlspecialchars($documento->nomeFicheiro) ?></p>
                             <div class="d-flex gap-2">
-                                <a href="/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
+                                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
                                     target="_blank" class="btn btn-sm btn-outline-primary">
                                     <i class="fa-solid fa-eye me-1"></i>Abrir PDF
                                 </a>
-                                <a href="/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
+                                <a href="/sibdas/1231343/medcare-inventory-solutions/Private/documentos/<?= htmlspecialchars($documento->nomeFicheiro) ?>"
                                     download class="btn btn-sm btn-acao-primaria">
                                     <i class="fa-solid fa-download me-1"></i>Descarregar
                                 </a>

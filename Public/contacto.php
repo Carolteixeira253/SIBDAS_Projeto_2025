@@ -1,3 +1,23 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+
+$configs = [];
+try {
+    $ligacao = new PDO(
+        "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+        DB_USER, DB_PASS
+    );
+    $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $rows = $ligacao->query("SELECT chave, valor FROM Configuracao")->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rows as $row) {
+        $configs[$row->chave] = $row->valor;
+    }
+    $ligacao = null;
+} catch (PDOException $err) {
+    $configs = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -58,7 +78,7 @@
                             <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <h5>Sede Central</h5>
-                                <p>Rua Dr António Benardino de Almeida 431 <br>4249-015 Porto, Portugal</p>
+                                <p><?= htmlspecialchars($configs['contacto_morada'] ?? 'Rua Dr António Benardino de Almeida 431, Porto') ?></p>
                             </div>
                         </div>
 
@@ -66,7 +86,7 @@
                             <div class="ct-info-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <h5>Linha de Apoio / Urgências</h5>
-                                <p>+351 253 123 456 (Chamada rede fixa nacional)</p>
+                                <p><?= htmlspecialchars($configs['contacto_telefone'] ?? '+351 253 123 456') ?></p>
                             </div>
                         </div>
 
@@ -74,7 +94,7 @@
                             <div class="ct-info-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h5>E-mail de Suporte</h5>
-                                <p>suporte@medcareinventory.pt</p>
+                                <p><?= htmlspecialchars($configs['contacto_email'] ?? 'suporte@medcareinventory.pt') ?></p>
                             </div>
                         </div>
 
@@ -141,7 +161,7 @@
     <!-- RODAPÉ DA PÁGINA -->
     <footer class="footer-container">
         <div class="footer-section">
-            <p>&copy; 2026 MedCare Inventory Solutions. Todos os direitos reservados.</p>
+            <p>&copy; 2026 <?= htmlspecialchars($configs['nome_hospital'] ?? 'MedCare Inventory Solutions') ?>. Todos os direitos reservados.</p>
         </div>
     </footer>
 

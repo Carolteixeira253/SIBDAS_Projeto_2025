@@ -1,3 +1,23 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+
+$configs = [];
+try {
+    $ligacao = new PDO(
+        "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
+        DB_USER, DB_PASS
+    );
+    $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $rows = $ligacao->query("SELECT chave, valor FROM Configuracao")->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rows as $row) {
+        $configs[$row->chave] = $row->valor;
+    }
+    $ligacao = null;
+} catch (PDOException $err) {
+    $configs = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -38,12 +58,8 @@
         <section class="quem-somos-container">
             <div class="quem-somos-conteudo">
                 <span class="subtitulo-clinico">A Nossa Missão</span>
-                <h1>Líderes em Engenharia Biomédica e Gestão de Dispositivos Médicos</h1>
-
-                <p>Fundada com o objetivo de elevar os padrões de segurança e eficiência hospitalar, a
-                    <strong>MedCare</strong> desenvolve soluções tecnológicas avançadas para o controlo total de
-                    inventários clínicos e manutenção preventiva de equipamentos críticos.</p>
-
+                <h1><?= htmlspecialchars($configs['sobre_titulo'] ?? 'Líderes em Engenharia Biomédica e Gestão de Dispositivos Médicos') ?></h1>
+                <p><?= htmlspecialchars($configs['sobre_texto'] ?? 'Fundada com o objetivo de elevar os padrões de segurança e eficiência hospitalar.') ?></p>
                 <p>Apoiamos hospitais, clínicas e unidades de saúde na transição para uma gestão digital inteligente,
                     garantindo que cada ventilador, monitor ou desfibrilhador esteja perfeitamente operacional,
                     calibrado e em total conformidade com as normas internacionais de saúde.</p>
@@ -66,7 +82,7 @@
 
     <footer class="footer-container">
         <div class="footer-section">
-            <p>&copy; 2026 MedCare Inventory Solutions. Todos os direitos reservados.</p>
+            <p>&copy; 2026 <?= htmlspecialchars($configs['nome_hospital'] ?? 'MedCare Inventory Solutions') ?>. Todos os direitos reservados.</p>
         </div>
     </footer>
 
