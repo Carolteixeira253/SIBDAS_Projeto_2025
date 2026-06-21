@@ -342,7 +342,15 @@ body, html {
         width: 100%;
     }
     .sidebar-medcare {
-        display: none !important;
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+        height: calc(100vh - 60px);
+        width: 260px;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+        overflow-y: auto;
     }
     .navbar-medcare {
         height: auto;

@@ -1,11 +1,31 @@
 <?php
+$mensagem_enviada = false;
+$erros_contacto = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome     = trim($_POST['nome'] ?? '');
+    $email    = trim($_POST['email'] ?? '');
+    $telefone = trim($_POST['telefone'] ?? '');
+    $servico  = trim($_POST['servico-interesse'] ?? '');
+    $mensagem = trim($_POST['mensagem'] ?? '');
+
+    if (empty($nome))     $erros_contacto[] = "O Nome é obrigatório.";
+    if (empty($email))    $erros_contacto[] = "O Email é obrigatório.";
+    if (empty($mensagem)) $erros_contacto[] = "A Mensagem é obrigatória.";
+
+    if (empty($erros_contacto)) {
+        $mensagem_enviada = true;
+    }
+}
+
 require_once __DIR__ . '/../config/config.php';
 
 $configs = [];
 try {
     $ligacao = new PDO(
         "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8",
-        DB_USER, DB_PASS
+        DB_USER,
+        DB_PASS
     );
     $ligacao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $rows = $ligacao->query("SELECT chave, valor FROM Configuracao")->fetchAll(PDO::FETCH_OBJ);
@@ -27,6 +47,7 @@ try {
     <title>Contacto - MedCare Inventory Solutions</title>
 
     <!-- Fontes e Estilos Externos -->
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
     <link rel="stylesheet" href="assets/fontawesome/all.min.css">
     <link rel="stylesheet" href="assets/css/1231343.css">
 </head>
@@ -58,7 +79,7 @@ try {
     <!-- CONTEÚDO PRINCIPAL: PÁGINA DE CONTACTO -->
     <main>
         <section class="ct-seccao">
-            
+
             <div class="ct-intro">
                 <span class="subtitulo-clinico">Suporte Técnico</span>
                 <h1>Fale com a MedCare</h1>
@@ -67,12 +88,12 @@ try {
 
             <!-- Contentor Bi-Partidário (Informação à esquerda, Formulário à direita) -->
             <div class="ct-container">
-                
+
                 <!-- Coluna 1: Informações de Contacto Institucionais -->
                 <div class="ct-info-box">
                     <h3>Informações de Contacto</h3>
                     <p class="ct-info-desc">Estamos disponíveis para dar suporte operacional a clínicas, hospitais e centros de saúde.</p>
-                    
+
                     <div class="ct-info-detalhes">
                         <div class="ct-info-item">
                             <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -111,10 +132,26 @@ try {
                 <!-- Coluna 2: Formulário Técnico de Mensagem -->
                 <div class="ct-form-box">
                     <h3>Formulário</h3>
-                    
+                    <?php if ($mensagem_enviada): ?>
+                        <div class="alert alert-success mb-4">
+                            <i class="fas fa-circle-check me-2"></i>
+                            Mensagem enviada com sucesso! Entraremos em contacto brevemente.
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($erros_contacto)): ?>
+                        <div class="alert alert-danger mb-4">
+                            <ul class="mb-0">
+                                <?php foreach ($erros_contacto as $e): ?>
+                                    <li><?= htmlspecialchars($e) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+
                     <!-- Atributos cruciais para avaliação do professor -->
-                    <form action="#" method="POST" class="medcare-form">
-                        
+                    <form action="" method="POST" class="medcare-form">
+
                         <div class="form-group">
                             <label for="nome">Nome Completo</label>
                             <input type="text" id="nome" name="nome" placeholder="Ex: Engenheiro Carlos Silva" required>
