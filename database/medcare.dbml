@@ -39,6 +39,7 @@ Table Localizacao {
   edificio varchar(100)
   servico varchar(100)
   piso varchar(20)
+  `ativo` tinyint DEFAULT 1
 }
 
 Table Documentacao {
@@ -62,6 +63,7 @@ Table Garantia {
   periodicidade varchar(100)
   observacoes text
   idEquipamento int [not null, ref: > Equipamento.idEquipamento]
+  `ativo` tinyint DEFAULT 1
 }
 
 Table Utilizador {

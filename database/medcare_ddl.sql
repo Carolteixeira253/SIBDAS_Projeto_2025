@@ -38,7 +38,8 @@ CREATE TABLE `Localizacao` (
   `nomeSala` varchar(100) NOT NULL,
   `edificio` varchar(100),
   `servico` varchar(100),
-  `piso` varchar(20)
+  `piso` varchar(20),
+  `ativo` tinyint DEFAULT 1
 );
 
 CREATE TABLE `Documentacao` (
@@ -61,7 +62,8 @@ CREATE TABLE `Garantia` (
   `entidadeResponsavel` varchar(150),
   `periodicidade` varchar(100),
   `observacoes` text,
-  `idEquipamento` int NOT NULL
+  `idEquipamento` int NOT NULL,
+  `ativo` tinyint DEFAULT 1
 );
 
 CREATE TABLE `Utilizador` (
