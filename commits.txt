@@ -1,3 +1,4 @@
+5c7a672 - Carolina Teixeira - 2026-06-23 15:04:31 +0100 - Final do Projeto
 18e1a69 - Carolina Teixeira - 2026-06-21 20:30:33 +0100 - Atualizacao  modelo relacional e DDL com coluna ativo em Localizacao e Garantia
 e3312b9 - Carolina Teixeira - 2026-06-21 19:47:18 +0100 - Menu 3 barras para versao  mobile, favicon em todas as paginas, formulario contacto com validacao
 815623b - Carolina Teixeira - 2026-06-21 18:44:53 +0100 - Area publica da BD, estrutura de pastas corrigida para sibdas/1231343, logs do sistema ativos + readme atualizado
