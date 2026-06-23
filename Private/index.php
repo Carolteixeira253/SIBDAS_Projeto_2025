@@ -207,7 +207,7 @@ function badgeCrit(?string $c): string
                             <h6 class="fw-bold mb-1">
                                 <i class="fa-solid fa-bell text-warning me-2"></i>Alertas de Garantia
                             </h6>
-                            <p class="text-muted small mb-3">Garantias a expirar nos próximos 30 dias</p>
+                            <p class="text-muted small mb-3">Garantias expiradas</p>
                             <?php if (empty($alertasGarantia)): ?>
                                 <div class="text-center text-muted py-3">
                                     <i class="fa-solid fa-circle-check text-success fs-3 mb-2 d-block"></i>

@@ -6,3 +6,17 @@
 [2026-06-21 16:43:15] | LOGIN | admin@medcare.pt | ::1 | Login efectuado por admin@medcare.pt
 [2026-06-21 18:23:10] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
 [2026-06-21 18:28:09] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-21 20:33:39] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-21 20:44:18] | EXPORTAR | admin@medcare.pt | 127.0.0.1 | Exportação CSV de equipamentos pelo utilizador admin@medcare.pt
+[2026-06-21 20:44:22] | EXPORTAR | admin@medcare.pt | 127.0.0.1 | Exportação CSV de equipamentos pelo utilizador admin@medcare.pt
+[2026-06-21 20:51:38] | ERRO | sistema | 127.0.0.1 | Tentativa de login falhada para: admin@medcare.pt
+[2026-06-21 20:51:46] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-21 20:53:18] | LOGIN | tecnico@medcare.pt | 127.0.0.1 | Login efectuado por tecnico@medcare.pt
+[2026-06-21 21:00:17] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-22 11:33:09] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-23 10:37:09] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-23 10:38:08] | LOGIN | tecnico@medcare.pt | 127.0.0.1 | Login efectuado por tecnico@medcare.pt
+[2026-06-23 12:19:27] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-23 12:21:55] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-23 12:27:04] | LOGIN | admin@medcare.pt | 127.0.0.1 | Login efectuado por admin@medcare.pt
+[2026-06-23 12:32:08] | LOGIN | tecnico@medcare.pt | 127.0.0.1 | Login efectuado por tecnico@medcare.pt
